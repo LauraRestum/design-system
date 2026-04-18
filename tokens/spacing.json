@@ -1,0 +1,50 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "meta": {
+    "name": "Envision Spacing Tokens",
+    "version": "1.0.0",
+    "description": "4px-base spacing scale. Use these values for all padding, margin, and gap — never arbitrary numbers.",
+    "updated": "2026-04-18",
+    "base": "4px"
+  },
+  "spacing": {
+    "0": { "value": "0", "type": "dimension" },
+    "1": { "value": "4px", "type": "dimension", "description": "Hairline separation. Icon-to-text gaps." },
+    "2": { "value": "8px", "type": "dimension", "description": "Tight inline spacing. Compact UI." },
+    "3": { "value": "12px", "type": "dimension", "description": "Default small gap." },
+    "4": { "value": "16px", "type": "dimension", "description": "Default inline padding, body copy margin between paragraphs." },
+    "5": { "value": "20px", "type": "dimension", "description": "Between related items in a stack." },
+    "6": { "value": "24px", "type": "dimension", "description": "Card padding default. Comfortable inline padding." },
+    "8": { "value": "32px", "type": "dimension", "description": "Space between distinct content blocks." },
+    "10": { "value": "40px", "type": "dimension", "description": "Larger card padding. Section-internal rhythm." },
+    "12": { "value": "48px", "type": "dimension", "description": "Major block separation. Hero vertical padding (mobile)." },
+    "16": { "value": "64px", "type": "dimension", "description": "Section vertical padding (standard)." },
+    "20": { "value": "80px", "type": "dimension", "description": "Section vertical padding (spacious). Hero vertical padding (desktop)." },
+    "24": { "value": "96px", "type": "dimension", "description": "Large hero padding. Major section breaks." },
+    "32": { "value": "128px", "type": "dimension", "description": "Editorial whitespace. Use sparingly for impact." }
+  },
+  "aliases": {
+    "section-y-tight": { "value": "{spacing.12}", "description": "Tight section vertical padding." },
+    "section-y-default": { "value": "{spacing.16}", "description": "Default section vertical padding." },
+    "section-y-spacious": { "value": "{spacing.20}", "description": "Spacious section vertical padding." },
+    "section-y-hero": { "value": "{spacing.24}", "description": "Hero-level vertical padding." },
+    "container-x": { "value": "{spacing.8}", "description": "Default horizontal padding inside a container." },
+    "card-padding": { "value": "{spacing.6}", "description": "Default internal card padding." },
+    "card-padding-lg": { "value": "{spacing.10}", "description": "Large card padding." },
+    "stack-tight": { "value": "{spacing.2}", "description": "Tight vertical rhythm between related elements." },
+    "stack-default": { "value": "{spacing.4}", "description": "Default vertical rhythm." },
+    "stack-loose": { "value": "{spacing.6}", "description": "Loose vertical rhythm between content blocks." }
+  },
+  "rules": {
+    "allowed": [
+      "Use values from this scale for all padding, margin, and gap.",
+      "When unsure between two values, choose the larger for better hierarchy.",
+      "Section vertical padding should be at minimum 64px on desktop, 48px on mobile."
+    ],
+    "forbidden": [
+      "Do not use arbitrary values like 13px, 27px, 50px, 75px.",
+      "Do not use values smaller than 4px for spacing.",
+      "Do not stack sections without adequate vertical rhythm (minimum 48px between sections)."
+    ]
+  }
+}

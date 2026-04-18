@@ -1,0 +1,169 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "meta": {
+    "name": "Envision Typography Tokens",
+    "version": "1.2.0",
+    "description": "Source of truth for Envision Inc. typographic system. Sourced from the Envision Brand Book (2026 Edition). Three typefaces, each with a specific role. Never substitute.",
+    "updated": "2026-04-18"
+  },
+  "typography": {
+    "font-family": {
+      "primary-print": {
+        "value": "Gotham",
+        "type": "fontFamily",
+        "description": "Primary typeface. Used for headlines and body copy in print and designed materials. Packed with confidence and clarity. Licensed font — requires Envision license for use.",
+        "use-for": ["Print materials", "InDesign layouts", "PowerPoint decks", "Branded PDFs", "Signage", "Event collateral"]
+      },
+      "primary-web": {
+        "value": "Montserrat",
+        "type": "fontFamily",
+        "description": "Web typeface. Used for headlines and body copy in all digital and HTML formats. Freely available via Google Fonts.",
+        "use-for": ["Websites", "HTML emails", "Web apps", "Digital presentations", "Screen-first deliverables"]
+      },
+      "logo-only": {
+        "value": "Humanist",
+        "type": "fontFamily",
+        "description": "Reserved exclusively for the Envision logo. Never use in any other context. Reserving this font for the logo strengthens brand identity and keeps the logo distinct.",
+        "use-for": ["Logo only"],
+        "forbidden-for": ["Headlines", "Body copy", "Captions", "Any text other than the logo wordmark"]
+      },
+      "print-fallback-stack": {
+        "value": "'Gotham', 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+        "type": "fontFamily",
+        "description": "CSS fallback chain for print-intended PDFs or digital files that target Gotham. Gotham must be licensed and installed; Montserrat is the nearest acceptable substitute."
+      },
+      "web-fallback-stack": {
+        "value": "'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+        "type": "fontFamily",
+        "description": "CSS font-family stack for web. Montserrat must be loaded; the fallback chain exists for email clients and systems without webfonts."
+      },
+      "email-fallback": {
+        "value": "Arial, Helvetica, sans-serif",
+        "type": "fontFamily",
+        "description": "Email-safe fallback. Use when Montserrat cannot render (Outlook desktop, some corporate email clients)."
+      },
+      "mono": {
+        "value": "'SF Mono', Menlo, Monaco, 'Courier New', monospace",
+        "type": "fontFamily",
+        "description": "Code, data tables, and monospace UI only. Not for brand-facing materials."
+      }
+    },
+    "font-weight": {
+      "book": { "value": 400, "type": "fontWeight", "description": "Gotham Book — body copy in print materials." },
+      "regular": { "value": 400, "type": "fontWeight", "description": "Montserrat Regular — body copy in web materials." },
+      "medium": { "value": 500, "type": "fontWeight", "description": "Emphasized body, UI labels, captions." },
+      "semibold": { "value": 600, "type": "fontWeight", "description": "Subheads, button text, small headlines." },
+      "bold": { "value": 700, "type": "fontWeight", "description": "Headlines, subheads, buttons. Brand book default for headlines." },
+      "black": { "value": 900, "type": "fontWeight", "description": "High-impact display. Use sparingly for hero moments." }
+    },
+    "font-size": {
+      "display-xl": { "value": "72px", "type": "dimension", "description": "Hero display. Landing pages, large print." },
+      "display-lg": { "value": "56px", "type": "dimension", "description": "Section hero." },
+      "display-md": { "value": "44px", "type": "dimension", "description": "Large page titles." },
+      "heading-xl": { "value": "36px", "type": "dimension", "description": "H1 on content pages." },
+      "heading-lg": { "value": "28px", "type": "dimension", "description": "H2." },
+      "heading-md": { "value": "22px", "type": "dimension", "description": "H3." },
+      "heading-sm": { "value": "18px", "type": "dimension", "description": "H4, subheadings." },
+      "body-lg": { "value": "18px", "type": "dimension", "description": "Large body for hero paragraphs and featured copy." },
+      "body-base": { "value": "16px", "type": "dimension", "description": "Default body copy." },
+      "body-sm": { "value": "14px", "type": "dimension", "description": "Secondary body, dense layouts." },
+      "caption": { "value": "12px", "type": "dimension", "description": "Metadata, disclaimers, footnotes." },
+      "micro": { "value": "11px", "type": "dimension", "description": "Print legal copy only. Minimum legible size." }
+    },
+    "line-height": {
+      "tight": { "value": "1.0", "type": "number", "description": "Buttons and large subheads per brand book (100-110%)." },
+      "headline": { "value": "1.1", "type": "number", "description": "Brand book spec: headlines leading 110%." },
+      "subhead": { "value": "1.1", "type": "number", "description": "Brand book spec: subheads 100-110%." },
+      "body": { "value": "1.5", "type": "number", "description": "Brand book spec: body copy leading 140-160%. Using 150% as default." },
+      "body-spacious": { "value": "1.6", "type": "number", "description": "Long-form reading. Brand book spec top of range." }
+    },
+    "letter-spacing": {
+      "headline": { "value": "-0.045em", "type": "dimension", "description": "Brand book spec: headlines tracking -0.045em." },
+      "subhead-large": { "value": "0.5em", "type": "dimension", "description": "Brand book spec: large uppercase subheads tracking 0.5em. Wide airy treatment." },
+      "subhead-small": { "value": "-0.02em", "type": "dimension", "description": "Brand book spec: small subheads tracking -0.02em." },
+      "body": { "value": "-0.02em", "type": "dimension", "description": "Brand book spec: body copy 0 to -0.02em." },
+      "body-neutral": { "value": "0", "type": "dimension", "description": "Neutral body tracking." },
+      "button": { "value": "0.25em", "type": "dimension", "description": "Brand book spec: buttons uppercase tracking 0.25em." }
+    }
+  },
+  "styles": {
+    "headline-print": {
+      "font-family": "{typography.font-family.print-fallback-stack}",
+      "font-size": "{typography.font-size.heading-xl}",
+      "font-weight": "{typography.font-weight.bold}",
+      "line-height": "{typography.line-height.headline}",
+      "letter-spacing": "{typography.letter-spacing.headline}",
+      "text-transform": "none",
+      "description": "Brand book headline spec — Gotham Bold or Black, title case, leading 110%, tracking -0.045em."
+    },
+    "headline-web": {
+      "font-family": "{typography.font-family.web-fallback-stack}",
+      "font-size": "{typography.font-size.heading-xl}",
+      "font-weight": "{typography.font-weight.bold}",
+      "line-height": "{typography.line-height.headline}",
+      "letter-spacing": "{typography.letter-spacing.headline}",
+      "text-transform": "none",
+      "description": "Brand book headline spec for web — Montserrat Bold or Black, title case, leading 110%, tracking -0.045em."
+    },
+    "subhead-large": {
+      "font-family": "{typography.font-family.web-fallback-stack}",
+      "font-size": "{typography.font-size.heading-lg}",
+      "font-weight": "{typography.font-weight.bold}",
+      "line-height": "{typography.line-height.subhead}",
+      "letter-spacing": "{typography.letter-spacing.subhead-large}",
+      "text-transform": "uppercase",
+      "description": "Brand book large subhead — Montserrat Bold, uppercase, leading 100-110%, tracking 0.5em. Airy and confident."
+    },
+    "subhead-small": {
+      "font-family": "{typography.font-family.web-fallback-stack}",
+      "font-size": "{typography.font-size.heading-sm}",
+      "font-weight": "{typography.font-weight.bold}",
+      "line-height": "{typography.line-height.subhead}",
+      "letter-spacing": "{typography.letter-spacing.subhead-small}",
+      "text-transform": "none",
+      "description": "Brand book small subhead — Montserrat Bold, leading 100-110%, tracking -0.02em."
+    },
+    "body-print": {
+      "font-family": "{typography.font-family.print-fallback-stack}",
+      "font-size": "{typography.font-size.body-base}",
+      "font-weight": "{typography.font-weight.book}",
+      "line-height": "{typography.line-height.body}",
+      "letter-spacing": "{typography.letter-spacing.body}",
+      "description": "Brand book body spec for print — Gotham Book, leading 140-160%, tracking 0 to -0.02em."
+    },
+    "body-web": {
+      "font-family": "{typography.font-family.web-fallback-stack}",
+      "font-size": "{typography.font-size.body-base}",
+      "font-weight": "{typography.font-weight.regular}",
+      "line-height": "{typography.line-height.body}",
+      "letter-spacing": "{typography.letter-spacing.body}",
+      "description": "Brand book body spec for web — Montserrat Regular, leading 140-160%, tracking 0 to -0.02em."
+    },
+    "button": {
+      "font-family": "{typography.font-family.web-fallback-stack}",
+      "font-size": "{typography.font-size.body-base}",
+      "font-weight": "{typography.font-weight.bold}",
+      "line-height": "{typography.line-height.tight}",
+      "letter-spacing": "{typography.letter-spacing.button}",
+      "text-transform": "uppercase",
+      "description": "Brand book button spec — Montserrat Bold, uppercase, leading 100-110%, tracking 0.25em."
+    }
+  },
+  "rules": {
+    "allowed": [
+      "Use Gotham for all Envision print and designed materials (requires license).",
+      "Use Montserrat for all web, HTML, and digital materials.",
+      "Apply exact brand book tracking: headlines -0.045em, buttons 0.25em uppercase, large subheads 0.5em uppercase.",
+      "Headlines are title case — not all-caps. All-caps is reserved for large uppercase subheads and buttons.",
+      "Use bold (700) as the default weight for headlines. Reserve black (900) for hero/display moments."
+    ],
+    "forbidden": [
+      "Do not use Humanist for any purpose other than the Envision logo.",
+      "Do not substitute Gotham or Montserrat for a 'similar' font (no Poppins, Inter, Roboto, Lato, Helvetica as primary).",
+      "Do not use italic for emphasis — use weight 700+ instead.",
+      "Do not use all-caps for headlines or body copy.",
+      "Do not use em dashes anywhere in Envision copy (brand voice rule).",
+      "Do not combine more than three weights in a single layout."
+    ]
+  }
+}

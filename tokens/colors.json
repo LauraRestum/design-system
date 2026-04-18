@@ -1,0 +1,153 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "meta": {
+    "name": "Envision Color Tokens",
+    "version": "1.2.0",
+    "description": "Source of truth for Envision Inc. brand color values. Sourced directly from the Envision Brand Book (2026 Edition). Do not invent new colors, round hex values, or approximate PMS/CMYK conversions.",
+    "updated": "2026-04-18",
+    "tagline": "Bold, vibrant, and full of life — just like the people we serve."
+  },
+  "color": {
+    "primary": {
+      "blue": {
+        "value": "#003087",
+        "type": "color",
+        "description": "Primary brand anchor. The default lead color for Envision across corporate, commercial, B2B, and federal work.",
+        "print": { "pms": "287C", "rgb": { "r": 0, "g": 48, "b": 135 }, "cmyk": { "c": 100, "m": 81, "y": 0, "k": 23 } }
+      },
+      "green": {
+        "value": "#78BE21",
+        "type": "color",
+        "description": "Primary brand accent. High-energy accent for CTAs, highlights, and controlled emphasis. Do not use as a full field color.",
+        "print": { "pms": "368C", "rgb": { "r": 120, "g": 190, "b": 33 }, "cmyk": { "c": 54, "m": 0, "y": 100, "k": 0 } }
+      }
+    },
+    "extended": {
+      "navy": {
+        "value": "#002855",
+        "type": "color",
+        "description": "Deep navy for layered backgrounds, footers, high-contrast overlays, and formal/federal work.",
+        "print": { "pms": "295C", "rgb": { "r": 0, "g": 40, "b": 85 }, "cmyk": { "c": 100, "m": 63, "y": 0, "k": 67 } }
+      },
+      "bright-blue": {
+        "value": "#41B6E6",
+        "type": "color",
+        "description": "Bright blue for accents, data-viz, supporting surfaces, and approachable B2C contexts.",
+        "print": { "pms": "298C", "rgb": { "r": 65, "g": 182, "b": 230 }, "cmyk": { "c": 63, "m": 3, "y": 0, "k": 0 } }
+      },
+      "forest-green": {
+        "value": "#00491E",
+        "type": "color",
+        "description": "Forest green for rich, grounded surfaces. Useful for mission-forward contexts and dense data backgrounds.",
+        "print": { "pms": "3537C", "rgb": { "r": 0, "g": 73, "b": 30 }, "cmyk": { "c": 100, "m": 0, "y": 100, "k": 69 } }
+      },
+      "goldenrod": {
+        "value": "#FFB81C",
+        "type": "color",
+        "description": "Warm accent for highlights, awards, recognition, and human-story callouts.",
+        "print": { "pms": "1235C", "rgb": { "r": 255, "g": 184, "b": 28 }, "cmyk": { "c": 0, "m": 25, "y": 94, "k": 0 } }
+      },
+      "terracotta": {
+        "value": "#EA733D",
+        "type": "color",
+        "description": "Warm accent for energy and approachability. Pair sparingly with primary blue.",
+        "print": { "pms": "4012C", "rgb": { "r": 234, "g": 115, "b": 61 }, "cmyk": { "c": 0, "m": 64, "y": 80, "k": 0 } }
+      },
+      "violet": {
+        "value": "#8C4799",
+        "type": "color",
+        "description": "Violet accent for distinction, specialty programs, and differentiated campaigns.",
+        "print": { "pms": "258C", "rgb": { "r": 140, "g": 71, "b": 153 }, "cmyk": { "c": 51, "m": 84, "y": 0, "k": 0 } }
+      },
+      "charcoal": {
+        "value": "#53565A",
+        "type": "color",
+        "description": "Charcoal for dense body copy, dark UI surfaces, and professional contexts where pure black feels harsh.",
+        "print": { "pms": "Cool Gray 11C", "rgb": { "r": 83, "g": 86, "b": 90 }, "cmyk": { "c": 63, "m": 52, "y": 44, "k": 33 } }
+      },
+      "gray": {
+        "value": "#D9D9D6",
+        "type": "color",
+        "description": "Soft neutral gray for backgrounds, dividers, and tonal separation.",
+        "print": { "pms": "Cool Gray 1C", "rgb": { "r": 217, "g": 217, "b": 214 }, "cmyk": { "c": 10, "m": 7, "y": 5, "k": 0 } }
+      }
+    },
+    "neutral": {
+      "white": { "value": "#FFFFFF", "type": "color", "description": "Pure white. Primary content background." },
+      "offwhite": { "value": "#F7F8FA", "type": "color", "description": "Subtle off-white for elevated surfaces that need separation from pure white." },
+      "black": { "value": "#000000", "type": "color", "description": "Reserved for print black and logo knockouts only. Do not use for body copy — use charcoal instead." }
+    },
+    "semantic": {
+      "text": {
+        "primary-on-light": { "value": "{color.extended.charcoal}", "type": "color" },
+        "primary-on-dark": { "value": "{color.neutral.white}", "type": "color" },
+        "headline-on-light": { "value": "{color.primary.blue}", "type": "color" },
+        "secondary-on-light": { "value": "{color.extended.charcoal}", "type": "color" },
+        "secondary-on-dark": { "value": "{color.extended.gray}", "type": "color" },
+        "link": { "value": "{color.primary.blue}", "type": "color" },
+        "link-hover": { "value": "{color.extended.navy}", "type": "color" }
+      },
+      "surface": {
+        "page": { "value": "{color.neutral.white}", "type": "color" },
+        "elevated": { "value": "{color.neutral.offwhite}", "type": "color" },
+        "inverse": { "value": "{color.primary.blue}", "type": "color" },
+        "inverse-deep": { "value": "{color.extended.navy}", "type": "color" }
+      },
+      "border": {
+        "subtle": { "value": "{color.extended.gray}", "type": "color" },
+        "default": { "value": "#B8BEC7", "type": "color" },
+        "strong": { "value": "{color.primary.blue}", "type": "color" }
+      },
+      "action": {
+        "primary": { "value": "{color.primary.blue}", "type": "color" },
+        "primary-hover": { "value": "{color.extended.navy}", "type": "color" },
+        "accent": { "value": "{color.primary.green}", "type": "color" },
+        "accent-hover": { "value": "#5E9A18", "type": "color", "description": "Darkened green for accessibility-compliant hover." }
+      }
+    },
+    "data-viz": {
+      "sequence": {
+        "01": { "value": "{color.primary.blue}", "type": "color", "description": "Primary series — corporate blue." },
+        "02": { "value": "{color.primary.green}", "type": "color", "description": "Secondary series — brand green." },
+        "03": { "value": "{color.extended.bright-blue}", "type": "color", "description": "Tertiary series — bright blue." },
+        "04": { "value": "{color.extended.goldenrod}", "type": "color", "description": "Quaternary series — goldenrod." },
+        "05": { "value": "{color.extended.terracotta}", "type": "color", "description": "Quinary series — terracotta." },
+        "06": { "value": "{color.extended.violet}", "type": "color", "description": "Senary series — violet." },
+        "07": { "value": "{color.extended.forest-green}", "type": "color", "description": "Septenary series — forest green." },
+        "08": { "value": "{color.extended.charcoal}", "type": "color", "description": "Neutral comparison series — charcoal." }
+      }
+    }
+  },
+  "accessibility": {
+    "description": "WCAG 2.1 AA-approved color combinations sourced directly from the Envision Brand Book. These meet or exceed 4.5:1 contrast ratio. Only use approved combinations when layering text or icons on color backgrounds.",
+    "approved-combinations": [
+      { "foreground": "#FFFFFF", "background": "#003087", "foreground-name": "White", "background-name": "Blue", "level": "AA" },
+      { "foreground": "#FFFFFF", "background": "#002855", "foreground-name": "White", "background-name": "Navy", "level": "AA" },
+      { "foreground": "#003087", "background": "#FFFFFF", "foreground-name": "Blue", "background-name": "White", "level": "AA" },
+      { "foreground": "#002855", "background": "#FFFFFF", "foreground-name": "Navy", "background-name": "White", "level": "AA" },
+      { "foreground": "#78BE21", "background": "#003087", "foreground-name": "Green", "background-name": "Blue", "level": "AA" },
+      { "foreground": "#53565A", "background": "#FFFFFF", "foreground-name": "Charcoal", "background-name": "White", "level": "AA" },
+      { "foreground": "#78BE21", "background": "#002855", "foreground-name": "Green", "background-name": "Navy", "level": "AA" },
+      { "foreground": "#00491E", "background": "#FFFFFF", "foreground-name": "Forest Green", "background-name": "White", "level": "AA" }
+    ]
+  },
+  "rules": {
+    "allowed": [
+      "Lead with primary blue (#003087) on nearly every Envision-produced asset.",
+      "Use primary green (#78BE21) as a controlled accent — CTAs, highlights, single-emphasis moments.",
+      "Use the extended palette to add warmth, differentiation, and energy to the system — especially in event, program, and human-story contexts.",
+      "Use navy (#002855) for formal, federal, or layered contexts where primary blue feels too bright.",
+      "Only layer text on color backgrounds using combinations from the accessibility.approved-combinations list.",
+      "All text must meet WCAG AA contrast on its background — verify before shipping."
+    ],
+    "forbidden": [
+      "Do not substitute primary blue for a navy shade without reason. Primary blue is #003087.",
+      "Do not use primary green as a large field or background color. It is an accent.",
+      "Do not invent new brand colors. Extend by combining existing values, or escalate.",
+      "Do not round or approximate hex values (no #003088, no #78BE20).",
+      "Do not convert to different PMS/CMYK equivalents without print-team approval.",
+      "Do not use pure black (#000000) for body copy — use charcoal (#53565A).",
+      "Do not layer text on background combinations outside the approved accessible list."
+    ]
+  }
+}
