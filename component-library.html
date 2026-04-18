@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Envision Design System — Components</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens/envision-tokens.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-family-web);
+    color: var(--color-charcoal);
+    background: var(--color-white);
+    line-height: 1.5;
+    padding: 0 0 96px;
+  }
+  .hdr {
+    background: var(--color-navy); color: var(--color-white);
+    padding: 48px 40px;
+  }
+  .hdr .eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--color-primary-green);
+    margin-bottom: 16px;
+  }
+  .hdr h1 {
+    font-size: 44px; font-weight: 900;
+    line-height: 1.1; letter-spacing: -0.045em;
+  }
+  .hdr p { margin-top: 16px; color: #B8C5D6; max-width: 720px; }
+
+  .wrap {
+    max-width: 1100px; margin: 0 auto;
+    padding: 48px 40px;
+  }
+  section { margin-bottom: 72px; }
+  section .num {
+    font-family: var(--font-family-mono); font-size: 11px; font-weight: 700;
+    letter-spacing: 0.25em; text-transform: uppercase; color: var(--color-primary-green);
+    margin-bottom: 8px;
+  }
+  section h2 {
+    font-size: 32px; font-weight: 700;
+    line-height: 1.1; letter-spacing: -0.045em;
+    color: var(--color-primary-blue); margin-bottom: 12px;
+  }
+  section .desc { max-width: 700px; color: var(--color-charcoal); font-size: 15px; margin-bottom: 32px; }
+
+  .canvas {
+    background: var(--color-offwhite);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 4px;
+    padding: 40px;
+    margin-bottom: 20px;
+  }
+  .canvas-dark { background: var(--color-primary-blue); }
+  .canvas-navy { background: var(--color-navy); }
+  .canvas-green { background: var(--color-primary-green); }
+
+  .row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .row.tight { gap: 12px; }
+  .row.large { gap: 24px; }
+
+  .tag {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--color-charcoal); margin-bottom: 12px;
+  }
+
+  .code {
+    font-family: var(--font-family-mono);
+    font-size: 12px;
+    color: var(--color-charcoal);
+    background: var(--color-white);
+    padding: 12px 16px;
+    border-left: 3px solid var(--color-primary-blue);
+    border-radius: 2px;
+    overflow-x: auto;
+  }
+
+  /* ===== Buttons ===== */
+  .btn {
+    display: inline-block;
+    font-family: var(--font-family-web);
+    font-size: 14px; font-weight: 700;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    padding: 16px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer; border: none;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .btn.sm { padding: 12px 24px; font-size: 12px; }
+  .btn.lg { padding: 20px 40px; font-size: 15px; }
+
+  .btn.primary { background: var(--color-primary-green); color: var(--color-white); }
+  .btn.primary:hover { background: #5E9A18; }
+  .btn.secondary { background: var(--color-primary-blue); color: var(--color-white); }
+  .btn.secondary:hover { background: var(--color-navy); }
+  .btn.tertiary {
+    background: transparent; color: var(--color-primary-blue);
+    border: 1.5px solid var(--color-primary-blue);
+  }
+  .btn.tertiary:hover { background: var(--color-primary-blue); color: var(--color-white); }
+  .btn.on-dark {
+    background: transparent; color: var(--color-white);
+    border: 1.5px solid var(--color-white);
+  }
+  .btn.on-dark:hover { background: var(--color-white); color: var(--color-primary-blue); }
+
+  /* ===== Eyebrows ===== */
+  .eyebrow-std {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--color-primary-green);
+  }
+  .eyebrow-pillar {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.5em; text-transform: uppercase;
+    color: var(--color-primary-green);
+  }
+  .eyebrow-neutral {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--color-charcoal);
+  }
+
+  /* ===== Cards ===== */
+  .cards-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 800px) { .cards-row { grid-template-columns: 1fr; } }
+  .card {
+    padding: 32px 28px;
+    background: var(--color-white);
+    border-radius: 4px;
+    border-top: 3px solid var(--color-primary-blue);
+  }
+  .card.accent-card { border-top-color: var(--color-primary-green); }
+  .card.accent-gold { border-top-color: var(--color-goldenrod); }
+  .card h3 {
+    font-size: 20px; font-weight: 700;
+    letter-spacing: -0.02em; color: var(--color-primary-blue);
+    margin-bottom: 12px; line-height: 1.2;
+  }
+  .card p { font-size: 14px; color: var(--color-charcoal); }
+
+  /* ===== Stats ===== */
+  .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  @media (max-width: 800px) { .stats-row { grid-template-columns: repeat(2, 1fr); gap: 32px; } }
+  .stat-lg .num {
+    font-size: 56px; font-weight: 900; line-height: 1;
+    letter-spacing: -0.045em; color: var(--color-primary-blue);
+    margin-bottom: 12px;
+  }
+  .stat-lg .num.g { color: var(--color-primary-green); }
+  .stat-lg .num.d { color: var(--color-white); }
+  .stat-lg .label {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--color-charcoal);
+  }
+  .stat-lg .label.d { color: #B8C5D6; }
+
+  /* ===== Form elements ===== */
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 720px; }
+  @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+  .field label {
+    display: block; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--color-primary-blue); margin-bottom: 8px;
+  }
+  .field input, .field textarea, .field select {
+    width: 100%;
+    font-family: var(--font-family-web);
+    font-size: 15px; padding: 14px 16px;
+    border: 1px solid var(--color-border-default);
+    border-radius: 4px;
+    background: var(--color-white);
+    color: var(--color-charcoal);
+    transition: border-color 0.15s ease;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus {
+    outline: none; border-color: var(--color-primary-blue);
+  }
+
+  /* ===== Callout boxes ===== */
+  .callout-set { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  @media (max-width: 800px) { .callout-set { grid-template-columns: 1fr; } }
+  .callout {
+    padding: 24px; border-radius: 4px;
+    border-left: 4px solid;
+  }
+  .callout.info { background: #EAF2FB; border-left-color: var(--color-primary-blue); }
+  .callout.note { background: #FDF6E4; border-left-color: var(--color-goldenrod); }
+  .callout.success { background: #E8F4D6; border-left-color: var(--color-primary-green); }
+  .callout h4 {
+    font-size: 14px; font-weight: 700;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .callout.info h4 { color: var(--color-primary-blue); }
+  .callout.note h4 { color: #B8891C; }
+  .callout.success h4 { color: #4D7A14; }
+  .callout p { font-size: 14px; color: var(--color-charcoal); }
+
+  /* ===== Tag/chip ===== */
+  .chip {
+    display: inline-block;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 4px;
+  }
+  .chip.primary { background: var(--color-primary-blue); color: var(--color-white); }
+  .chip.green { background: var(--color-primary-green); color: var(--color-white); }
+  .chip.outline { background: transparent; color: var(--color-primary-blue); border: 1px solid var(--color-primary-blue); }
+  .chip.subtle { background: var(--color-offwhite); color: var(--color-charcoal); border: 1px solid var(--color-border-subtle); }
+
+  /* ===== Divider ===== */
+  .divider {
+    height: 1px; background: var(--color-border-subtle);
+    margin: 32px 0;
+  }
+  .divider.strong { background: var(--color-primary-blue); height: 2px; }
+  .divider.accent { background: var(--color-primary-green); height: 3px; width: 80px; }
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="eyebrow">Envision Design System · Components</div>
+  <h1>Component Library</h1>
+  <p>The individual building blocks. Buttons, cards, stats, form fields, callouts, chips, dividers, eyebrows. Use these to assemble the section patterns.</p>
+</header>
+
+<div class="wrap">
+
+  <!-- BUTTONS -->
+  <section>
+    <div class="num">Component 01</div>
+    <h2>Buttons</h2>
+    <p class="desc">Uppercase, tracked at 0.25em, Bold. Three variants: Primary (Green) for conversion CTAs, Secondary (Blue) for navigation-level actions, Tertiary (ghost) for secondary options. On dark backgrounds, use the ghost-on-dark variant.</p>
+
+    <div class="tag">Primary — Green — Conversion CTAs</div>
+    <div class="canvas">
+      <div class="row">
+        <button class="btn primary sm">Get Started</button>
+        <button class="btn primary">Schedule a Conversation</button>
+        <button class="btn primary lg">Request Capabilities Brief</button>
+      </div>
+    </div>
+
+    <div class="tag">Secondary — Blue — Navigation-level actions</div>
+    <div class="canvas">
+      <div class="row">
+        <button class="btn secondary sm">Learn More</button>
+        <button class="btn secondary">View All Programs</button>
+        <button class="btn secondary lg">Explore the Brand Book</button>
+      </div>
+    </div>
+
+    <div class="tag">Tertiary — Ghost — Secondary options</div>
+    <div class="canvas">
+      <div class="row">
+        <button class="btn tertiary sm">Download</button>
+        <button class="btn tertiary">Read the Case Study</button>
+      </div>
+    </div>
+
+    <div class="tag">On dark backgrounds</div>
+    <div class="canvas canvas-dark">
+      <div class="row">
+        <button class="btn primary">Get Started</button>
+        <button class="btn on-dark">Read More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- EYEBROWS -->
+  <section>
+    <div class="num">Component 02</div>
+    <h2>Eyebrows</h2>
+    <p class="desc">The small uppercase label that introduces a headline. Three variants. Standard (green, 0.25em) is the default. Pillar (green, 0.5em — wider, more editorial) for program pillar sections. Neutral (charcoal) for utility contexts.</p>
+    <div class="canvas">
+      <div style="margin-bottom:28px">
+        <div class="tag">Standard</div>
+        <div class="eyebrow-std">Corporate Capabilities</div>
+      </div>
+      <div style="margin-bottom:28px">
+        <div class="tag">Pillar (wider, editorial)</div>
+        <div class="eyebrow-pillar">PILLAR · ARTS</div>
+      </div>
+      <div>
+        <div class="tag">Neutral (utility, metadata)</div>
+        <div class="eyebrow-neutral">April 2026 · Capabilities Brief</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDS -->
+  <section>
+    <div class="num">Component 03</div>
+    <h2>Cards</h2>
+    <p class="desc">Used in feature grids, program summaries, capability breakdowns. Visual identifier is a 3px colored top border — no drop shadows, no hover lifts. Optional accent variants (green, goldenrod) draw the eye to one featured card per grid.</p>
+    <div class="canvas">
+      <div class="cards-row">
+        <div class="card">
+          <h3>Print & Fulfillment</h3>
+          <p>Enterprise commercial print with integrated fulfillment and on-site warehousing across 410K sq ft.</p>
+        </div>
+        <div class="card accent-card">
+          <h3>Contact Center</h3>
+          <p>HIPAA-compliant inbound and outbound services with live agent and IVR solutions.</p>
+        </div>
+        <div class="card accent-gold">
+          <h3>Assembly & Kitting</h3>
+          <p>Precision assembly and custom kitting for medical, retail, and government buyers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section>
+    <div class="num">Component 04</div>
+    <h2>Stat displays</h2>
+    <p class="desc">Large number, small label. Numbers use display type weight and tight tracking. On light backgrounds, Primary Blue by default; one stat may use Primary Green as the hero metric. On dark backgrounds, white numbers with the same single-green-accent rule.</p>
+    <div class="canvas">
+      <div class="stats-row">
+        <div class="stat-lg"><div class="num">410K</div><div class="label">Square Feet Operations</div></div>
+        <div class="stat-lg"><div class="num g">93%</div><div class="label">On-Time Delivery</div></div>
+        <div class="stat-lg"><div class="num">1933</div><div class="label">Founded in Wichita</div></div>
+      </div>
+    </div>
+    <div class="canvas canvas-navy">
+      <div class="stats-row">
+        <div class="stat-lg"><div class="num d">410K</div><div class="label d">Square Feet Operations</div></div>
+        <div class="stat-lg"><div class="num g">93%</div><div class="label d">On-Time Delivery</div></div>
+        <div class="stat-lg"><div class="num d">1933</div><div class="label d">Founded in Wichita</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALLOUTS -->
+  <section>
+    <div class="num">Component 05</div>
+    <h2>Callout boxes</h2>
+    <p class="desc">Inline informational callouts. Left border 4px in a contextually-appropriate color. Background is a very-subtle tint of the border color. Used for sidenotes, process callouts, and highlights inside long-form content.</p>
+    <div class="canvas">
+      <div class="callout-set">
+        <div class="callout info">
+          <h4>Context</h4>
+          <p>AbilityOne contracts are the foundation for Base Supply Center operations — not just a credential.</p>
+        </div>
+        <div class="callout note">
+          <h4>Note</h4>
+          <p>Envision Xpress is retired. All materials must reflect Envision Base Supply Center going forward.</p>
+        </div>
+        <div class="callout success">
+          <h4>Proof Point</h4>
+          <p>Workforce Readiness Bootcamp graduates achieve 87% job placement within 90 days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHIPS -->
+  <section>
+    <div class="num">Component 06</div>
+    <h2>Chips / tags</h2>
+    <p class="desc">Small labels for metadata, category identifiers, certification markers. Uppercase, tracked at 0.15em. Four variants: Primary (filled blue), Green (filled green), Outline (bordered blue), Subtle (neutral bordered).</p>
+    <div class="canvas">
+      <div class="row tight">
+        <span class="chip primary">HIPAA Compliant</span>
+        <span class="chip green">New</span>
+        <span class="chip outline">AbilityOne</span>
+        <span class="chip subtle">Federal</span>
+        <span class="chip outline">ISO 9001:2015</span>
+        <span class="chip outline">SOC 2 Type II</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMS -->
+  <section>
+    <div class="num">Component 07</div>
+    <h2>Form fields</h2>
+    <p class="desc">Label in uppercase eyebrow style above the input. Inputs are bordered with subtle gray, 4px radius, 14-16px padding. Focus state: border goes to Primary Blue. Form fields live in a 2-column grid on desktop, stack on mobile.</p>
+    <div class="canvas">
+      <div class="form-grid">
+        <div class="field">
+          <label>Full Name</label>
+          <input type="text" placeholder="Jane Smith">
+        </div>
+        <div class="field">
+          <label>Company</label>
+          <input type="text" placeholder="Acme Corp">
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" placeholder="jane@company.com">
+        </div>
+        <div class="field">
+          <label>Category</label>
+          <select>
+            <option>Commercial Print</option>
+            <option>Fulfillment</option>
+            <option>Contact Center</option>
+            <option>Assembly</option>
+          </select>
+        </div>
+        <div class="field" style="grid-column: 1 / -1">
+          <label>Message</label>
+          <textarea rows="4" placeholder="Tell us about your operation..."></textarea>
+        </div>
+      </div>
+      <div style="margin-top: 24px">
+        <button class="btn primary">Submit Request</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDERS -->
+  <section>
+    <div class="num">Component 08</div>
+    <h2>Dividers</h2>
+    <p class="desc">Thin horizontal rules that separate content within a section. Three variants. Subtle (1px gray) for most uses. Strong (2px blue) to mark major content boundaries. Accent (3px short green) as a decorative mark beneath a headline.</p>
+    <div class="canvas">
+      <div class="tag">Subtle — default separation inside content</div>
+      <div class="divider"></div>
+      <div class="tag" style="margin-top: 32px">Strong — major section boundary</div>
+      <div class="divider strong"></div>
+      <div class="tag" style="margin-top: 32px">Accent — mark beneath a headline</div>
+      <div class="divider accent"></div>
+    </div>
+  </section>
+
+  <!-- TYPOGRAPHY SAMPLES -->
+  <section>
+    <div class="num">Component 09</div>
+    <h2>Type samples in context</h2>
+    <p class="desc">How typography looks inside real content blocks. Always title case for headlines. Always tracked per the brand book. Body copy at -0.02em for subtle optical refinement.</p>
+    <div class="canvas">
+      <div class="eyebrow-std" style="margin-bottom: 16px;">Our Approach</div>
+      <h3 style="font-size: 44px; font-weight: 900; line-height: 1.1; letter-spacing: -0.045em; color: var(--color-primary-blue); margin-bottom: 24px; max-width: 780px;">Enterprise-grade manufacturing, built with access from the start.</h3>
+      <p style="font-size: 17px; color: var(--color-charcoal); max-width: 680px; line-height: 1.55; letter-spacing: -0.015em; margin-bottom: 20px;">
+        Envision operates across 410,000 square feet of print, fulfillment, and assembly capability — producing enterprise-grade output for Fortune 500 and federal buyers. Certifications include HIPAA, SOC 2, ISO 9001, and G3.
+      </p>
+      <p style="font-size: 17px; color: var(--color-charcoal); max-width: 680px; line-height: 1.55; letter-spacing: -0.015em;">
+        We're a high-performing commercial partner. Capability, compliance, and on-time delivery are the story. Mission is the reason to choose us when capability is equal.
+      </p>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Envision Design System — Section Patterns</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens/envision-tokens.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: var(--font-family-web);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-charcoal);
+    background: var(--color-white);
+    line-height: var(--line-height-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== Docs chrome ===== */
+  .doc-header {
+    background: var(--color-navy);
+    color: var(--color-white);
+    padding: 48px 40px;
+  }
+  .doc-header .eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--color-primary-green);
+    margin-bottom: 16px;
+  }
+  .doc-header h1 {
+    font-size: 44px; font-weight: 900;
+    line-height: 1.1; letter-spacing: -0.045em;
+    max-width: 900px;
+  }
+  .doc-header p {
+    max-width: 720px; margin-top: 20px;
+    color: #B8C5D6; font-size: 17px;
+  }
+  .doc-toc {
+    background: var(--color-offwhite);
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding: 24px 40px;
+  }
+  .doc-toc ol {
+    list-style: none; display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 8px 24px; counter-reset: toc;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .doc-toc li {
+    counter-increment: toc; font-size: 14px;
+  }
+  .doc-toc li::before {
+    content: counter(toc, decimal-leading-zero) " — ";
+    font-family: var(--font-family-mono); color: var(--color-primary-green);
+    font-size: 11px; font-weight: 700;
+  }
+  .doc-toc a { color: var(--color-primary-blue); text-decoration: none; font-weight: 500; }
+  .doc-toc a:hover { text-decoration: underline; }
+
+  /* Annotation blocks between patterns */
+  .pattern-note {
+    background: var(--color-offwhite);
+    padding: 32px 40px;
+    border-top: 1px solid var(--color-border-subtle);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+  .pattern-note .pattern-number {
+    font-family: var(--font-family-mono);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--color-primary-green); margin-bottom: 8px;
+  }
+  .pattern-note h2 {
+    font-size: 28px; font-weight: 700;
+    line-height: 1.1; letter-spacing: -0.045em;
+    color: var(--color-primary-blue); margin-bottom: 8px;
+  }
+  .pattern-note .meta {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    font-size: 13px; color: var(--color-charcoal); margin-bottom: 16px;
+  }
+  .pattern-note .meta span {
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .pattern-note .meta strong {
+    font-weight: 700; color: var(--color-primary-blue);
+  }
+  .pattern-note p { max-width: 800px; font-size: 15px; }
+  .pattern-note .use, .pattern-note .dont {
+    font-size: 13px; margin-top: 12px;
+  }
+  .pattern-note .use strong { color: var(--color-forest-green); }
+  .pattern-note .dont strong { color: var(--color-terracotta); }
+
+  /* ===== Common helpers ===== */
+  .container {
+    max-width: 1200px; margin: 0 auto;
+    padding-left: 40px; padding-right: 40px;
+  }
+  @media (max-width: 640px) {
+    .container { padding-left: 24px; padding-right: 24px; }
+  }
+
+  /* ===== Pattern 1: Hero, type-forward ===== */
+  .p1 {
+    background: var(--color-primary-blue);
+    color: var(--color-white);
+    padding: 128px 0;
+  }
+  .p1 .eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--color-primary-green);
+    margin-bottom: 24px;
+  }
+  .p1 h1 {
+    font-size: 72px; font-weight: 900;
+    line-height: 1.05; letter-spacing: -0.045em;
+    max-width: 900px; margin-bottom: 32px;
+  }
+  .p1 p {
+    font-size: 20px; color: #B8C5D6;
+    max-width: 620px; margin-bottom: 48px;
+    line-height: 1.5;
+  }
+  .p1 .btn { display: inline-block; }
+
+  /* ===== Pattern 2: Hero, split ===== */
+  .p2 { padding: 128px 0; background: var(--color-white); }
+  .p2 .grid {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: 64px; align-items: center;
+  }
+  .p2 .eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--color-primary-green);
+    margin-bottom: 20px;
+  }
+  .p2 h2 {
+    font-size: 56px; font-weight: 900;
+    line-height: 1.05; letter-spacing: -0.045em;
+    color: var(--color-primary-blue); margin-bottom: 24px;
+  }
+  .p2 p {
+    font-size: 18px; color: var(--color-charcoal);
+    max-width: 540px; margin-bottom: 40px;
+  }
+  .p2 .img {
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, #003087 0%, #002855 100%);
+    border-radius: 4px;
+    display: flex; align-items: flex-end; padding: 32px;
+    color: white; font-size: 14px; letter-spacing: 0.15em;
+    text-transform: uppercase; opacity: 0.9;
+  }
+  @media (max-width: 900px) {
+    .p2 .grid { grid-template-columns: 1fr; gap: 40px; }
+    .p2 h2 { font-size: 36px; }
+  }
+
+  /* ===== Pattern 3: Stat block ===== */
+  .p3 { padding: 96px 0; background: var(--color-offwhite); }
+  .p3 .header { text-align: center; max-width: 720px; margin: 0 auto 64px; }
+  .p3 .header h2 {
+    font-size: 36px; font-weight: 700;
+    line-height: 1.1; letter-spacing: -0.045em;
+    color: var(--color-primary-blue); margin-bottom: 16px;
+  }
+  .p3 .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+  }
+  .p3 .stat .num {
+    font-size: 64px; font-weight: 900;
+    line-height: 1; letter-spacing: -0.045em;
+    color: var(--color-primary-blue); margin-bottom: 12px;
+  }
+  .p3 .stat .num.accent { color: var(--color-primary-green); }
+  .p3 .stat .label {
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--color-charcoal);
+  }
+  @media (max-width: 900px) {
+    .p3 .stats { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  }
+
+  /* ===== Pattern 4: Feature grid cards ===== */
+  .p4 { padding: 96px 0; background: var(--color-white); }
+  .p4 .header { max-width: 720px; margin-bottom: 64px; }
+  .p4 .eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--color-primary-green);
+    margin-bottom: 16px;
+  }
+  .p4 h2 {
+    font-size: 36px; font-weight: 700;
+    line-height: 1.1; letter-spacing: -0.045em;
+    color: var(--color-primary-blue);
+  }
+  .p4 .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .p4 .card {
+    padding: 40px 32px;
+    background: var(--color-offwhite);
+    border-radius: 4px;
+    border-top: 3px solid var(--color-primary-blue);
+  }
+  .p4 .card.accent { border-top-color: var(--color-primary-green); }
+  .p4 .card h3 {
+    font-size: 22px; font-weight: 700;
+    color: var(--color-primary-blue); margin-bottom: 16px;
+    letter-spacing: -0.02em; line-height: 1.2;
+  }
+  .p4 .card p { font-size: 15px; color: var(--color-charcoal); }
+  @media (max-width: 900px) {
+    .p4 .grid { grid-template-columns: 1fr; gap: 24px; }
+  }
+
+  /* ===== Pattern 5: Pull quote ===== */
+  .p5 { padding: 128px 0; background: var(--color-white); text-align: center; }
+  .p5 .quote {
+    font-size: 36px; font-weight: 700;
+    line-height: 1.25; letter-spacing: -0.02em;
+    color: var(--color-primary-blue);
+    max-width: 900px; margin: 0 auto 32px;
+  }
+  .p5 .attribution {
+    font-size: 14px; font-weight: 700;
+    color: var(--color-charcoal);
+    letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .p5 .attribution .name { color: var(--color-primary-blue); }
+  @media (max-width: 900px) { .p5 .quote { font-size: 26px; } }
+
+  /* ===== Pattern 6: Pillar section ===== */
+  .p6 { padding: 128px 0; background: var(--color-white); }
+  .p6 .grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    align-items: center;
+  }
+  .p6 .eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.5em;
+    text-transform: uppercase; color: var(--color-primary-green);
+    margin-bottom: 20px;
+  }
+  .p6 h2 {
+    font-size: 44px; font-weight: 900;
+    line-height: 1.05; letter-spacing: -0.045em;
+    color: var(--color-primary-blue); margin-bottom: 24px;
+  }
+  .p6 p {
+    font-size: 17px; color: var(--color-charcoal);
+    margin-bottom: 32px;
+  }
+  .p6 .visual {
+    aspect-ratio: 1;
+    background: var(--color-goldenrod);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--color-primary-blue);
+    font-size: 72px; font-weight: 900; letter-spacing: -0.045em;
+  }
+  @media (max-width: 900px) {
+    .p6 .grid { grid-template-columns: 1fr; gap: 40px; }
+    .p6 h2 { font-size: 32px; }
+  }
+
+  /* ===== Pattern 7: Full-width callout ===== */
+  .p7 {
+    background: var(--color-primary-green);
+    padding: 96px 0;
+    text-align: center;
+  }
+  .p7 h2 {
+    font-size: 44px; font-weight: 900;
+    line-height: 1.05; letter-spacing: -0.045em;
+    color: var(--color-primary-blue);
+    max-width: 800px; margin: 0 auto 32px;
+  }
+  .p7 .btn { display: inline-block; }
+
+  /* ===== Pattern 8: Data-forward ===== */
+  .p8 { padding: 96px 0; background: var(--color-white); }
+  .p8 .header { margin-bottom: 48px; display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 24px; }
+  .p8 .header h2 {
+    font-size: 32px; font-weight: 700;
+    letter-spacing: -0.045em; color: var(--color-primary-blue);
+    line-height: 1.1;
+  }
+  .p8 .header .small {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--color-charcoal);
+  }
+  .p8 table {
+    width: 100%; border-collapse: collapse;
+    font-size: 14px;
+  }
+  .p8 th {
+    text-align: left; padding: 16px 0;
+    border-bottom: 2px solid var(--color-primary-blue);
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--color-primary-blue);
+  }
+  .p8 td {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--color-border-subtle);
+    color: var(--color-charcoal);
+  }
+  .p8 td.highlight { color: var(--color-primary-green); font-weight: 700; }
+  .p8 .certs {
+    display: flex; gap: 16px; flex-wrap: wrap; margin-top: 32px;
+  }
+  .p8 .cert {
+    border: 1px solid var(--color-primary-blue);
+    color: var(--color-primary-blue);
+    padding: 8px 16px; border-radius: 4px;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  /* ===== Pattern 9: Image grid ===== */
+  .p9 { padding: 96px 0; background: var(--color-offwhite); }
+  .p9 h2 {
+    font-size: 36px; font-weight: 700;
+    letter-spacing: -0.045em; color: var(--color-primary-blue);
+    margin-bottom: 48px; line-height: 1.1;
+  }
+  .p9 .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .p9 .img {
+    aspect-ratio: 4/3;
+    border-radius: 4px;
+    display: flex; align-items: flex-end; padding: 24px;
+    color: white; font-size: 13px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .p9 .img:nth-child(1) { background: var(--color-primary-blue); }
+  .p9 .img:nth-child(2) { background: var(--color-terracotta); }
+  .p9 .img:nth-child(3) { background: var(--color-forest-green); }
+  .p9 .img:nth-child(4) { background: var(--color-violet); }
+  .p9 .img:nth-child(5) { background: var(--color-goldenrod); color: var(--color-primary-blue); }
+  .p9 .img:nth-child(6) { background: var(--color-navy); }
+  @media (max-width: 900px) { .p9 .grid { grid-template-columns: 1fr 1fr; } }
+
+  /* ===== Pattern 10: Footer ===== */
+  .p10 {
+    background: var(--color-navy);
+    color: var(--color-white);
+    padding: 80px 0 32px;
+  }
+  .p10 .grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px; margin-bottom: 64px;
+  }
+  .p10 .brand-name {
+    font-size: 28px; font-weight: 900;
+    letter-spacing: -0.045em; margin-bottom: 16px;
+  }
+  .p10 .tagline {
+    font-size: 14px; color: #B8C5D6; max-width: 340px;
+  }
+  .p10 h4 {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--color-primary-green); margin-bottom: 20px;
+  }
+  .p10 ul { list-style: none; }
+  .p10 ul li { margin-bottom: 10px; font-size: 14px; }
+  .p10 ul li a { color: #B8C5D6; text-decoration: none; }
+  .p10 ul li a:hover { color: var(--color-white); }
+  .p10 .bottom {
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: #B8C5D6;
+    letter-spacing: 0.05em;
+  }
+  @media (max-width: 900px) {
+    .p10 .grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* Universal buttons */
+  .btn {
+    display: inline-block;
+    font-size: 14px; font-weight: 700;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    padding: 18px 36px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.15s ease;
+  }
+  .btn.primary { background: var(--color-primary-green); color: var(--color-white); }
+  .btn.primary:hover { background: #5E9A18; }
+  .btn.secondary { background: var(--color-primary-blue); color: var(--color-white); }
+  .btn.secondary:hover { background: var(--color-navy); }
+  .btn.on-green { background: var(--color-primary-blue); color: var(--color-white); }
+  .btn.ghost-on-dark {
+    background: transparent; color: var(--color-white);
+    border: 1.5px solid var(--color-white);
+  }
+  .btn.ghost-on-dark:hover { background: var(--color-white); color: var(--color-primary-blue); }
+</style>
+</head>
+<body>
+
+<header class="doc-header">
+  <div class="eyebrow">Envision Design System · Layout Gallery</div>
+  <h1>Section Patterns — Ten Building Blocks That Make an Envision Page</h1>
+  <p>Most Envision pages are assembled from these ten section types. Study them, then compose. Each pattern is preceded by a note explaining when to use it, what makes it on-brand, and what breaks it.</p>
+</header>
+
+<nav class="doc-toc">
+  <ol>
+    <li><a href="#p1">Hero, type-forward</a></li>
+    <li><a href="#p2">Hero, split with image</a></li>
+    <li><a href="#p3">Stat block (3-4 column)</a></li>
+    <li><a href="#p4">Feature grid — cards</a></li>
+    <li><a href="#p5">Pull quote / testimonial</a></li>
+    <li><a href="#p6">Pillar / program section</a></li>
+    <li><a href="#p7">Full-width callout</a></li>
+    <li><a href="#p8">Data-forward section</a></li>
+    <li><a href="#p9">Image grid / gallery</a></li>
+    <li><a href="#p10">Footer</a></li>
+  </ol>
+</nav>
+
+<!-- ============= PATTERN 1 ============= -->
+<div class="pattern-note">
+  <div class="pattern-number">Pattern 01</div>
+  <h2>Hero, type-forward</h2>
+  <div class="meta">
+    <span><strong>Use for:</strong> Commercial sales pages, B2B landing pages, federal work</span>
+    <span><strong>Background:</strong> Solid Primary Blue</span>
+    <span><strong>Height:</strong> 128-160px vertical padding</span>
+  </div>
+  <p>The most Envision-looking hero. Type does all the work. No image, no illustration, no gradient — just big confident typography on solid navy or primary blue, a supporting subline, and a single CTA. Green shows up twice: the eyebrow and the button.</p>
+  <p class="use"><strong>✓ Use when:</strong> You need enterprise credibility. When photography isn't available. When the headline is the message and nothing else matters.</p>
+  <p class="dont"><strong>✗ Never:</strong> add drop shadows, gradient overlays, decorative lines, or illustrations. Let the type stand alone.</p>
+</div>
+<section class="p1" id="p1">
+  <div class="container">
+    <div class="eyebrow">Corporate Capabilities</div>
+    <h1>Enterprise-grade manufacturing, on time, at spec.</h1>
+    <p>Print, fulfillment, contact center, and assembly operations serving Fortune 500 and government buyers across industries.</p>
+    <a href="#" class="btn primary">Schedule a Conversation</a>
+  </div>
+</section>
+
+<!-- ============= PATTERN 2 ============= -->
+<div class="pattern-note">
+  <div class="pattern-number">Pattern 02</div>
+  <h2>Hero, split (type + image)</h2>
+  <div class="meta">
+    <span><strong>Use for:</strong> Program pages, mission-forward landing pages</span>
+    <span><strong>Layout:</strong> 7/5 grid, content left, image right</span>
+    <span><strong>Height:</strong> 128px vertical padding</span>
+  </div>
+  <p>The workhorse of mission and program pages. Content and image share the hero. Photography goes on the right at a 4:5 vertical aspect ratio, showing a person in action. The image never gets a rounded mask or decorative overlay. Sharp corners, sharp edges.</p>
+  <p class="use"><strong>✓ Use when:</strong> A person or moment is central to the story. Program pages, pillar pages, donor-facing work.</p>
+  <p class="dont"><strong>✗ Never:</strong> use generic stock photography. Never apply a circular crop. Never let the image outweigh the headline visually.</p>
+</div>
+<section class="p2" id="p2">
+  <div class="container">
+    <div class="grid">
+      <div>
+        <div class="eyebrow">Envision Vision Rehabilitation Center</div>
+        <h2>You don't have to figure this out alone.</h2>
+        <p>Clinical low vision evaluations, assistive technology training, and independent living skills programs — all designed around what you actually need to live fully.</p>
+        <a href="#" class="btn secondary">Request an Evaluation</a>
+      </div>
+      <div class="img">[Photo: client with clinician]</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PATTERN 3 ============= -->
+<div class="pattern-note">
+  <div class="pattern-number">Pattern 03</div>
+  <h2>Stat block (3-4 column)</h2>
+  <div class="meta">
+    <span><strong>Use for:</strong> Capability proof points, impact summaries, by-the-numbers blocks</span>
+    <span><strong>Layout:</strong> 3 or 4 equal columns</span>
+    <span><strong>Background:</strong> Off-white or white</span>
+  </div>
+  <p>Large numbers dominate. Labels are small and uppercase. One stat may use Primary Green to highlight the hero metric. Never more than one green stat — it loses emphasis.</p>
+  <p class="use"><strong>✓ Use when:</strong> You have real, verified numbers. Anywhere proof points are stronger than copy.</p>
+  <p class="dont"><strong>✗ Never:</strong> make all the numbers green. Never use fake or vague stats ("100s of…", "many…").</p>
+</div>
+<section class="p3" id="p3">
+  <div class="container">
+    <div class="header">
+      <h2>By the numbers</h2>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num">410K</div><div class="label">Square Feet Operations</div></div>
+      <div class="stat"><div class="num accent">93%</div><div class="label">On-Time Delivery</div></div>
+      <div class="stat"><div class="num">16</div><div class="label">Base Supply Locations</div></div>
+      <div class="stat"><div class="num">1933</div><div class="label">Founded in Wichita</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PATTERN 4 ============= -->
+<div class="pattern-note">
+  <div class="pattern-number">Pattern 04</div>
+  <h2>Feature grid — cards</h2>
+  <div class="meta">
+    <span><strong>Use for:</strong> Service lists, capability breakdowns, program summaries</span>
+    <span><strong>Layout:</strong> 3 columns on desktop, 1 on mobile</span>
+    <span><strong>Background:</strong> White; cards on off-white</span>
+  </div>
+  <p>Cards have a 3px colored top border as the only visual identifier — no drop shadows, no hover lifts, no decorative icons unless content requires them. One card may use the green top border to draw the eye.</p>
+  <p class="use"><strong>✓ Use when:</strong> You have 3-6 parallel items of equal importance.</p>
+  <p class="dont"><strong>✗ Never:</strong> use more than 6 cards — break into two sections instead. Never use shadows to create depth.</p>
+</div>
+<section class="p4" id="p4">
+  <div class="container">
+    <div class="header">
+      <div class="eyebrow">Commercial Capabilities</div>
+      <h2>What we deliver.</h2>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <h3>Print & Fulfillment</h3>
+        <p>Enterprise-grade commercial print with integrated fulfillment and on-site warehousing across 410K sq ft.</p>
+      </div>
+      <div class="card accent">
+        <h3>Contact Center</h3>
+        <p>HIPAA-compliant inbound and outbound services with live agent and IVR solutions for healthcare and federal clients.</p>
+      </div>
+      <div class="card">
+        <h3>Assembly & Kitting</h3>
+        <p>Precision assembly, light manufacturing, and custom kitting operations for medical, retail, and government buyers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PATTERN 5 ============= -->
+<div class="pattern-note">
+  <div class="pattern-number">Pattern 05</div>
+  <h2>Pull quote / testimonial</h2>
+  <div class="meta">
+    <span><strong>Use for:</strong> Customer quotes, client testimonials, mission-driven moments</span>
+    <span><strong>Alignment:</strong> Centered</span>
+    <span><strong>Height:</strong> 128px vertical padding minimum</span>
+  </div>
+  <p>Quote set in Primary Blue at 28-36px, Bold, tight line-height. Attribution in uppercase caption style beneath. Plenty of whitespace — this section only does one thing, let it breathe.</p>
+  <p class="use"><strong>✓ Use when:</strong> A direct quote moves the story forward better than description could. For mission-driven pages.</p>
+  <p class="dont"><strong>✗ Never:</strong> decorate with quotation marks, scrolls, or illustrations. The white space is the decoration.</p>
+</div>
+<section class="p5" id="p5">
+  <div class="container">
+    <p class="quote">"It didn't give me a job. It gave me the skills to go get a job."</p>
+    <div class="attribution"><span class="name">Marcus R.</span> &nbsp;·&nbsp; Workforce Readiness Bootcamp Graduate</div>
+  </div>
+</section>
+
+<!-- ============= PATTERN 6 ============= -->
+<div class="pattern-note">
+  <div class="pattern-number">Pattern 06</div>
+  <h2>Pillar / program section</h2>
+  <div class="meta">
+    <span><strong>Use for:</strong> Introducing one of the eight program pillars</span>
+    <span><strong>Layout:</strong> 1/1 split</span>
+    <span><strong>Eyebrow tracking:</strong> 0.5em uppercase</span>
+  </div>
+  <p>This uses the large-subhead treatment — uppercase at 0.5em tracking — as the eyebrow label, giving each pillar an editorial, magazine-cover feel. The visual can be photography or an accent-color block. Extended palette colors are welcome here to distinguish pillars.</p>
+  <p class="use"><strong>✓ Use when:</strong> Introducing a specific pillar (Arts, Research, Workforce, Mission Services, etc.).</p>
+  <p class="dont"><strong>✗ Never:</strong> use the same pillar eyebrow tracking on non-pillar sections. It dilutes the pattern.</p>
+</div>
+<section class="p6" id="p6">
+  <div class="container">
+    <div class="grid">
+      <div>
+        <div class="eyebrow">PILLAR · ARTS</div>
+        <h2>Creative expression belongs to everyone.</h2>
+        <p>The Envision Arts Center is a studio, gallery, and community space where artists who are blind or low vision make, show, and sell their work. Real work. Real artists. Real community.</p>
+        <a href="#" class="btn secondary">Visit the Arts Center</a>
+      </div>
+      <div class="visual">A</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PATTERN 7 ============= -->
+<div class="pattern-note">
+  <div class="pattern-number">Pattern 07</div>
+  <h2>Full-width callout</h2>
+  <div class="meta">
+    <span><strong>Use for:</strong> Pre-footer CTAs, major section breaks</span>
+    <span><strong>Background:</strong> Primary Blue, Navy, or Primary Green</span>
+    <span><strong>Height:</strong> 96px vertical padding</span>
+  </div>
+  <p>A full-bleed band of solid color that interrupts the normal page flow. One headline, one CTA. When the background is Primary Green, the headline goes Primary Blue for contrast (one of the eight approved WCAG combinations).</p>
+  <p class="use"><strong>✓ Use when:</strong> You want a decisive break before the footer, or to separate major sections with a confident moment.</p>
+  <p class="dont"><strong>✗ Never:</strong> use more than one full-width callout per page — they lose impact if repeated.</p>
+</div>
+<section class="p7" id="p7">
+  <div class="container">
+    <h2>Ready to see what thriving looks like in your operation?</h2>
+    <a href="#" class="btn on-green">Request a Capabilities Brief</a>
+  </div>
+</section>
+
+<!-- ============= PATTERN 8 ============= -->
+<div class="pattern-note">
+  <div class="pattern-number">Pattern 08</div>
+  <h2>Data-forward section</h2>
+  <div class="meta">
+    <span><strong>Use for:</strong> Capability tables, certification displays, contract vehicles</span>
+    <span><strong>Background:</strong> White</span>
+    <span><strong>Primary use:</strong> Commercial/federal work</span>
+  </div>
+  <p>For procurement-facing pages. Dense, credible, type-dominant. Tables use Primary Blue rules (top border 2px, row borders 1px subtle gray). Certifications appear as bordered tags in Primary Blue. One data cell may highlight in Primary Green.</p>
+  <p class="use"><strong>✓ Use when:</strong> Your audience needs to verify specifics — spec tables, contract vehicles, certifications.</p>
+  <p class="dont"><strong>✗ Never:</strong> use emoji, colored row backgrounds, or decorative icons in data sections. Let the data be credible.</p>
+</div>
+<section class="p8" id="p8">
+  <div class="container">
+    <div class="header">
+      <h2>Contract vehicles & certifications</h2>
+      <div class="small">Updated April 2026</div>
+    </div>
+    <table>
+      <thead><tr><th>Vehicle</th><th>Category</th><th>Scope</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>GSA Schedule</td><td>Federal</td><td>Print, fulfillment, office</td><td class="highlight">Active</td></tr>
+        <tr><td>AbilityOne</td><td>Federal</td><td>BSC operations, assembly</td><td class="highlight">Active</td></tr>
+        <tr><td>SEWP VI</td><td>Federal IT</td><td>IT fulfillment, assembly</td><td>Pending</td></tr>
+        <tr><td>Vizient GPO</td><td>Commercial</td><td>Healthcare print, supplies</td><td class="highlight">Active</td></tr>
+      </tbody>
+    </table>
+    <div class="certs">
+      <span class="cert">HIPAA Compliant</span>
+      <span class="cert">SOC 2 Type II</span>
+      <span class="cert">ISO 9001:2015</span>
+      <span class="cert">G3 Certified</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PATTERN 9 ============= -->
+<div class="pattern-note">
+  <div class="pattern-number">Pattern 09</div>
+  <h2>Image grid / gallery</h2>
+  <div class="meta">
+    <span><strong>Use for:</strong> Event recaps, program showcases, facility tours</span>
+    <span><strong>Layout:</strong> 2-3 columns, sharp rectangles</span>
+    <span><strong>Gap:</strong> 24px</span>
+  </div>
+  <p>Photography shown at consistent aspect ratios, sharp rectangles, 4px max corner radius. Caption or label optional, placed as a lower overlay. Use for moments where the visual variety IS the message — a facility, an event, a program in action.</p>
+  <p class="use"><strong>✓ Use when:</strong> Multiple photos collectively tell a story that one image couldn't.</p>
+  <p class="dont"><strong>✗ Never:</strong> use circular photo crops, round masks, or Instagram-style filters. Straight photography, treated with restraint.</p>
+</div>
+<section class="p9" id="p9">
+  <div class="container">
+    <h2>Across our programs</h2>
+    <div class="grid">
+      <div class="img">Research Lab</div>
+      <div class="img">Arts Center</div>
+      <div class="img">ECDC Classroom</div>
+      <div class="img">Workforce Training</div>
+      <div class="img">Base Supply Center</div>
+      <div class="img">Mission Services</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PATTERN 10 ============= -->
+<div class="pattern-note">
+  <div class="pattern-number">Pattern 10</div>
+  <h2>Footer</h2>
+  <div class="meta">
+    <span><strong>Use for:</strong> Every page</span>
+    <span><strong>Background:</strong> Navy (#002855)</span>
+    <span><strong>Layout:</strong> 4 columns on desktop</span>
+  </div>
+  <p>Navy background (darker than hero blue, so it reads as "bottom" of the page). Primary Green uppercase eyebrow labels for each column. Body links in secondary-on-dark color. A thin divider separates the main columns from the copyright line.</p>
+  <p class="use"><strong>✓ Use:</strong> 4-column structure at desktop — brand area (2 cols), then 3 single-column nav lists.</p>
+  <p class="dont"><strong>✗ Never:</strong> use Primary Blue for the footer (too similar to the hero — no visual differentiation). Never use social-media icon clutter.</p>
+</div>
+<footer class="p10" id="p10">
+  <div class="container">
+    <div class="grid">
+      <div>
+        <div class="brand-name">Envision</div>
+        <p class="tagline">Inspiring the community, supporting caregivers, and providing a pathway to independence — so people who are blind or low vision can thrive.</p>
+      </div>
+      <div>
+        <h4>Pillars</h4>
+        <ul>
+          <li><a href="#">Commercial Solutions</a></li>
+          <li><a href="#">Workforce Innovation</a></li>
+          <li><a href="#">Research Institute</a></li>
+          <li><a href="#">Mission Services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Capabilities</a></li>
+          <li><a href="#">Brand Book</a></li>
+          <li><a href="#">Annual Report</a></li>
+          <li><a href="#">News</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Wichita Campus</li>
+          <li>Dallas Campus</li>
+          <li><a href="#">Get in touch</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <div>© 2026 Envision Inc. All rights reserved.</div>
+      <div>Proudly manufactured in the United States.</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

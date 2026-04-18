@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Envision Email Template — Sample</title>
+<style>
+  /* Email-safe: inline-friendly styles, no external CSS beyond webfonts */
+  body {
+    margin: 0; padding: 0;
+    background: #F7F8FA;
+    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #53565A;
+  }
+  table { border-collapse: collapse; }
+  img { display: block; border: 0; }
+  a { color: #003087; text-decoration: none; }
+</style>
+</head>
+<body style="margin:0;padding:32px 0;background:#F7F8FA;font-family:'Montserrat','Helvetica Neue',Helvetica,Arial,sans-serif;color:#53565A;">
+
+<!-- Outer wrapper -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F7F8FA;">
+  <tr>
+    <td align="center">
+
+      <!-- Email container: 640px -->
+      <table role="presentation" width="640" cellpadding="0" cellspacing="0" style="max-width:640px;width:100%;background:#FFFFFF;">
+
+        <!-- Preheader (hidden) -->
+        <tr>
+          <td style="display:none;max-height:0;overflow:hidden;">
+            A quick update on commercial capabilities, new certifications, and what's next at Envision.
+          </td>
+        </tr>
+
+        <!-- Top brand bar -->
+        <tr>
+          <td style="background:#003087;padding:24px 40px;" align="left">
+            <div style="font-size:22px;font-weight:900;letter-spacing:-0.045em;color:#FFFFFF;">ENVISION</div>
+          </td>
+        </tr>
+
+        <!-- Hero -->
+        <tr>
+          <td style="background:#003087;padding:0 40px 64px 40px;" align="left">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:#78BE21;margin-bottom:20px;">
+              APRIL 2026 · COMMERCIAL UPDATE
+            </div>
+            <h1 style="margin:0;font-size:40px;font-weight:900;line-height:1.1;letter-spacing:-0.045em;color:#FFFFFF;max-width:480px;">
+              A quarter of growth, and what comes next.
+            </h1>
+          </td>
+        </tr>
+
+        <!-- Body intro -->
+        <tr>
+          <td style="padding:56px 40px 24px 40px;" align="left">
+            <p style="margin:0 0 20px 0;font-size:17px;line-height:1.55;letter-spacing:-0.015em;color:#53565A;">
+              Hi {{FNAME}},
+            </p>
+            <p style="margin:0 0 20px 0;font-size:17px;line-height:1.55;letter-spacing:-0.015em;color:#53565A;">
+              Q1 closed with Envision's commercial operations running at 93% on-time delivery across 410,000 sq ft — our strongest quarter since 2022. Here's a quick look at what's new, what's certified, and what's next.
+            </p>
+          </td>
+        </tr>
+
+        <!-- Divider -->
+        <tr>
+          <td style="padding:0 40px;">
+            <div style="height:2px;background:#003087;width:80px;"></div>
+          </td>
+        </tr>
+
+        <!-- Stats block (table-based for email compatibility) -->
+        <tr>
+          <td style="padding:40px;" align="left">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="33%" valign="top" align="left" style="padding-right:16px;">
+                  <div style="font-size:40px;font-weight:900;line-height:1;letter-spacing:-0.045em;color:#003087;">410K</div>
+                  <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#53565A;margin-top:8px;">Sq Ft Operations</div>
+                </td>
+                <td width="33%" valign="top" align="left" style="padding-right:16px;">
+                  <div style="font-size:40px;font-weight:900;line-height:1;letter-spacing:-0.045em;color:#78BE21;">93%</div>
+                  <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#53565A;margin-top:8px;">On-Time Delivery</div>
+                </td>
+                <td width="33%" valign="top" align="left">
+                  <div style="font-size:40px;font-weight:900;line-height:1;letter-spacing:-0.045em;color:#003087;">16</div>
+                  <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#53565A;margin-top:8px;">BSC Locations</div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Featured section -->
+        <tr>
+          <td style="padding:24px 40px;" align="left">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:#78BE21;margin-bottom:12px;">
+              NEW THIS QUARTER
+            </div>
+            <h2 style="margin:0 0 16px 0;font-size:28px;font-weight:700;line-height:1.15;letter-spacing:-0.045em;color:#003087;">
+              SEWP VI contract pending approval.
+            </h2>
+            <p style="margin:0 0 24px 0;font-size:16px;line-height:1.55;letter-spacing:-0.015em;color:#53565A;">
+              Envision's federal IT fulfillment operations are under review for inclusion on SEWP VI — expanding our federal procurement reach into IT hardware kitting and assembly.
+            </p>
+            <a href="#" style="display:inline-block;font-size:13px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;padding:16px 32px;border-radius:4px;background:#78BE21;color:#FFFFFF;text-decoration:none;">Read the Briefing</a>
+          </td>
+        </tr>
+
+        <!-- Feature cards (table-based) -->
+        <tr>
+          <td style="padding:40px;" align="left">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:#53565A;margin-bottom:20px;">
+              ALSO THIS MONTH
+            </div>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td valign="top" style="padding:24px;background:#F7F8FA;border-top:3px solid #003087;border-radius:4px;">
+                  <h3 style="margin:0 0 10px 0;font-size:17px;font-weight:700;letter-spacing:-0.02em;color:#003087;line-height:1.2;">ISO 9001:2015 renewal complete</h3>
+                  <p style="margin:0;font-size:14px;line-height:1.5;color:#53565A;">Three-year recertification with zero findings. Audit documentation available for enterprise buyers.</p>
+                </td>
+              </tr>
+              <tr><td style="height:16px;"></td></tr>
+              <tr>
+                <td valign="top" style="padding:24px;background:#F7F8FA;border-top:3px solid #78BE21;border-radius:4px;">
+                  <h3 style="margin:0 0 10px 0;font-size:17px;font-weight:700;letter-spacing:-0.02em;color:#003087;line-height:1.2;">New fulfillment partnership with Vizient GPO</h3>
+                  <p style="margin:0;font-size:14px;line-height:1.5;color:#53565A;">Healthcare procurement members now have direct access to Envision's HIPAA-compliant print and fulfillment services.</p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Pull quote -->
+        <tr>
+          <td style="padding:24px 40px 56px 40px;" align="left">
+            <div style="border-left:4px solid #78BE21;padding:8px 0 8px 24px;">
+              <p style="margin:0 0 12px 0;font-size:20px;font-weight:700;line-height:1.35;letter-spacing:-0.02em;color:#003087;">"The team delivered 240,000 personalized pieces with zero defects and a 4-day turn."</p>
+              <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#53565A;">
+                <span style="color:#003087;">Sarah K.</span> · VP Procurement, Fortune 100 Healthcare
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <!-- CTA band -->
+        <tr>
+          <td style="background:#78BE21;padding:56px 40px;" align="center">
+            <h2 style="margin:0 0 24px 0;font-size:28px;font-weight:900;line-height:1.15;letter-spacing:-0.045em;color:#003087;max-width:420px;">
+              Ready to talk through your operation?
+            </h2>
+            <a href="#" style="display:inline-block;font-size:13px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;padding:16px 32px;border-radius:4px;background:#003087;color:#FFFFFF;text-decoration:none;">Schedule a Conversation</a>
+          </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+          <td style="background:#002855;padding:40px;" align="left">
+            <div style="font-size:18px;font-weight:900;letter-spacing:-0.045em;color:#FFFFFF;margin-bottom:8px;">ENVISION</div>
+            <p style="margin:0 0 24px 0;font-size:13px;color:#B8C5D6;max-width:480px;line-height:1.5;">
+              Enterprise manufacturing, commercial print, and federal contracting — built with access from the start.
+            </p>
+            <p style="margin:0;font-size:11px;color:#B8C5D6;letter-spacing:0.05em;">
+              2301 S Water Street, Wichita, KS 67213 &nbsp;·&nbsp; 1801 Valley View Lane, Farmers Branch, TX 75234
+            </p>
+            <p style="margin:20px 0 0 0;font-size:11px;color:#B8C5D6;letter-spacing:0.05em;">
+              <a href="#" style="color:#B8C5D6;">View in browser</a> &nbsp;·&nbsp;
+              <a href="#" style="color:#B8C5D6;">Update preferences</a> &nbsp;·&nbsp;
+              <a href="#" style="color:#B8C5D6;">Unsubscribe</a>
+            </p>
+          </td>
+        </tr>
+
+      </table>
+
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

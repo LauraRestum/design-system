@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Envision Design System — Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens/envision-tokens.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-family-web);
+    color: var(--color-charcoal);
+    background: var(--color-white);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .hero {
+    background: var(--color-primary-blue);
+    color: var(--color-white);
+    padding: 96px 48px 128px;
+  }
+  .hero .inner { max-width: 1100px; margin: 0 auto; }
+  .hero .eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--color-primary-green);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: 64px; font-weight: 900;
+    line-height: 1.05; letter-spacing: -0.045em;
+    max-width: 900px; margin-bottom: 28px;
+  }
+  .hero p {
+    font-size: 18px; color: #B8C5D6;
+    max-width: 680px;
+  }
+
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 72px 48px; }
+
+  .section-head {
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--color-primary-blue);
+    margin-bottom: 32px;
+  }
+  .section-head .num {
+    font-family: var(--font-family-mono); font-size: 11px; font-weight: 700;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--color-primary-green); margin-bottom: 6px;
+  }
+  .section-head h2 {
+    font-size: 32px; font-weight: 700;
+    line-height: 1.1; letter-spacing: -0.045em;
+    color: var(--color-primary-blue);
+  }
+  .section-head p { margin-top: 10px; font-size: 15px; max-width: 720px; }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 72px;
+  }
+  @media (max-width: 800px) { .cards { grid-template-columns: 1fr; } }
+  .card {
+    padding: 32px 28px;
+    background: var(--color-offwhite);
+    border-radius: 4px;
+    border-top: 3px solid var(--color-primary-blue);
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .card:hover {
+    background: var(--color-white);
+    border-color: var(--color-primary-green);
+  }
+  .card.accent { border-top-color: var(--color-primary-green); }
+  .card.viz { border-top-color: var(--color-goldenrod); background: #FFF9E8; }
+  .card.viz:hover { background: var(--color-white); border-top-color: var(--color-primary-green); }
+  .card .tag {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--color-charcoal); margin-bottom: 12px;
+  }
+  .card .tag.html { color: var(--color-primary-green); }
+  .card h3 {
+    font-size: 20px; font-weight: 700;
+    letter-spacing: -0.02em; color: var(--color-primary-blue);
+    margin-bottom: 12px; line-height: 1.2;
+  }
+  .card p { font-size: 14px; color: var(--color-charcoal); margin-bottom: 12px; }
+  .card .arrow {
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--color-primary-green);
+  }
+
+  .start-here {
+    background: var(--color-primary-green);
+    color: var(--color-primary-blue);
+    padding: 32px 36px;
+    border-radius: 4px;
+    margin-bottom: 64px;
+  }
+  .start-here h3 {
+    font-size: 22px; font-weight: 900;
+    letter-spacing: -0.045em; margin-bottom: 10px;
+  }
+  .start-here p { font-size: 15px; margin-bottom: 20px; }
+  .start-here ol {
+    list-style: none; counter-reset: steps;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px;
+  }
+  @media (max-width: 700px) { .start-here ol { grid-template-columns: 1fr; } }
+  .start-here li {
+    counter-increment: steps;
+    font-size: 14px;
+    padding-left: 32px;
+    position: relative;
+    line-height: 1.4;
+  }
+  .start-here li::before {
+    content: counter(steps);
+    position: absolute; left: 0; top: -2px;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--color-primary-blue); color: var(--color-primary-green);
+    font-size: 11px; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .start-here li a { color: var(--color-primary-blue); font-weight: 700; text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="inner">
+    <div class="eyebrow">Envision Design System · 2026 Edition</div>
+    <h1>The single source of truth for how Envision looks, sounds, and designs.</h1>
+    <p>Tokens, principles, components, patterns, and recipes. All referenced from one place, by humans and AI alike. Built from the Envision Brand Book (2026 Edition).</p>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <!-- START HERE -->
+  <div class="start-here">
+    <h3>Start here</h3>
+    <p>If this is your first time in the design system, read these in order:</p>
+    <ol>
+      <li><a href="guidelines/our-story.md">Our story</a> — mission, promise, and the through-line (Thriving).</li>
+      <li><a href="design-principles/README.md">Design principles</a> — the twelve rules that make something look like Envision.</li>
+      <li><a href="layout/section-patterns.html">Section patterns</a> — ten building blocks that make a page.</li>
+      <li><a href="components/component-library.html">Component library</a> — the individual UI elements.</li>
+      <li><a href="design-recipes/README.md">Design recipes</a> — task-based guides for common deliverables.</li>
+      <li><a href="CLAUDE.md">CLAUDE.md</a> — how AI assistants use this system.</li>
+    </ol>
+  </div>
+
+  <!-- VISUAL REFERENCES -->
+  <div class="section-head">
+    <div class="num">Section 01</div>
+    <h2>Visual references</h2>
+    <p>Rendered HTML pages you can open in the browser. These are the documents you'll use most often.</p>
+  </div>
+  <div class="cards">
+    <a href="layout/section-patterns.html" class="card accent">
+      <div class="tag html">HTML · Interactive</div>
+      <h3>Section patterns</h3>
+      <p>Ten section types rendered and annotated — heroes, stat blocks, cards, quotes, data tables, footers. The main document for page composition.</p>
+      <div class="arrow">Open →</div>
+    </a>
+    <a href="components/component-library.html" class="card accent">
+      <div class="tag html">HTML · Interactive</div>
+      <h3>Component library</h3>
+      <p>Buttons, cards, stats, chips, form fields, callouts, dividers, and eyebrows — all the small pieces that assemble into sections.</p>
+      <div class="arrow">Open →</div>
+    </a>
+    <a href="examples/token-preview.html" class="card accent">
+      <div class="tag html">HTML · Interactive</div>
+      <h3>Token preview</h3>
+      <p>All colors, typography, and WCAG-approved combinations rendered in one page. Good for sanity-checking brand values.</p>
+      <div class="arrow">Open →</div>
+    </a>
+    <a href="patterns/landing-page-commercial.html" class="card viz">
+      <div class="tag html">HTML · Full page</div>
+      <h3>Commercial landing page</h3>
+      <p>Complete landing page composed from section patterns. Hero, stats, capabilities, quote, compliance table, CTA, footer.</p>
+      <div class="arrow">Open →</div>
+    </a>
+    <a href="patterns/email-template.html" class="card viz">
+      <div class="tag html">HTML · Email-safe</div>
+      <h3>Email template</h3>
+      <p>Table-based, Mailchimp-ready, Outlook-safe email template. Full structure with hero, stats, callout, quote, and footer.</p>
+      <div class="arrow">Open →</div>
+    </a>
+    <a href="patterns/slide-layouts.html" class="card viz">
+      <div class="tag html">HTML · 16:9 slides</div>
+      <h3>PowerPoint slide layouts</h3>
+      <p>Eight slide layouts at 16:9 proportions. Cover, section divider, content, big stat, 3-column, quote, closing, data matrix.</p>
+      <div class="arrow">Open →</div>
+    </a>
+  </div>
+
+  <!-- DESIGN FOUNDATION -->
+  <div class="section-head">
+    <div class="num">Section 02</div>
+    <h2>Design foundation</h2>
+    <p>Markdown documents that govern every decision. Read once, reference forever.</p>
+  </div>
+  <div class="cards">
+    <a href="design-principles/README.md" class="card">
+      <div class="tag">Markdown · Design</div>
+      <h3>Design principles</h3>
+      <p>The twelve rules that define Envision design. Navy anchors, type leads, hierarchy before decoration, whitespace is a feature, restraint wins, and more.</p>
+      <div class="arrow">Read →</div>
+    </a>
+    <a href="layout/README.md" class="card">
+      <div class="tag">Markdown · Layout</div>
+      <h3>Layout system</h3>
+      <p>Grids, container widths, section rhythm, spacing rhythm, breakpoints, composition rules. The underlying structure.</p>
+      <div class="arrow">Read →</div>
+    </a>
+    <a href="design-recipes/README.md" class="card">
+      <div class="tag">Markdown · Recipes</div>
+      <h3>Design recipes</h3>
+      <p>Task-based how-tos. How to design a commercial deck, a landing page, an email campaign, a one-pager, a pillar page.</p>
+      <div class="arrow">Read →</div>
+    </a>
+  </div>
+
+  <!-- TOKENS -->
+  <div class="section-head">
+    <div class="num">Section 03</div>
+    <h2>Tokens</h2>
+    <p>Machine-readable source of truth. What Claude Code reads when you say "use Envision colors."</p>
+  </div>
+  <div class="cards">
+    <a href="tokens/colors.json" class="card">
+      <div class="tag">JSON · Colors</div>
+      <h3>colors.json</h3>
+      <p>Primary + extended palette with PMS, RGB, CMYK, semantic aliases, data-viz sequence, and eight WCAG AA-approved combinations.</p>
+      <div class="arrow">View →</div>
+    </a>
+    <a href="tokens/typography.json" class="card">
+      <div class="tag">JSON · Typography</div>
+      <h3>typography.json</h3>
+      <p>Gotham (print), Montserrat (web), Humanist (logo only). Exact brand book tracking, weights, and composed text styles.</p>
+      <div class="arrow">View →</div>
+    </a>
+    <a href="tokens/spacing.json" class="card">
+      <div class="tag">JSON · Spacing</div>
+      <h3>spacing.json</h3>
+      <p>4px-base spacing scale. Named aliases for section padding, card padding, and vertical stack rhythm.</p>
+      <div class="arrow">View →</div>
+    </a>
+    <a href="tokens/envision-tokens.css" class="card accent">
+      <div class="tag">CSS · Ready-to-use</div>
+      <h3>envision-tokens.css</h3>
+      <p>Every token as a CSS custom property plus utility classes. Drop one &lt;link&gt; into any HTML file and you're on-brand.</p>
+      <div class="arrow">View →</div>
+    </a>
+  </div>
+
+  <!-- BRAND GOVERNANCE -->
+  <div class="section-head">
+    <div class="num">Section 04</div>
+    <h2>Brand governance</h2>
+    <p>The written brand standards. Voice, architecture, pillars, personas.</p>
+  </div>
+  <div class="cards">
+    <a href="guidelines/our-story.md" class="card">
+      <div class="tag">Markdown · Story</div>
+      <h3>Our story</h3>
+      <p>Mission, promise, six core values, history, elevator pitch, the through-line of Thriving.</p>
+      <div class="arrow">Read →</div>
+    </a>
+    <a href="guidelines/brand-rules.md" class="card">
+      <div class="tag">Markdown · Rules</div>
+      <h3>Brand rules</h3>
+      <p>The short scannable non-negotiables. Person-first language, mission-follows-credibility, retired marks, entity naming.</p>
+      <div class="arrow">Read →</div>
+    </a>
+    <a href="guidelines/voice-and-tone.md" class="card">
+      <div class="tag">Markdown · Voice</div>
+      <h3>Voice & tone</h3>
+      <p>The voice philosophy, word swaps, before/after examples for every pillar.</p>
+      <div class="arrow">Read →</div>
+    </a>
+    <a href="guidelines/brand-architecture.md" class="card">
+      <div class="tag">Markdown · Architecture</div>
+      <h3>Brand architecture</h3>
+      <p>Three-tier lock-up system, foundation lock-ups, retired marks, brand nomenclature rules.</p>
+      <div class="arrow">Read →</div>
+    </a>
+    <a href="guidelines/pillar-profiles.md" class="card">
+      <div class="tag">Markdown · Pillars</div>
+      <h3>Pillar profiles</h3>
+      <p>All eight program pillars with tone, lead message, and content rules.</p>
+      <div class="arrow">Read →</div>
+    </a>
+    <a href="guidelines/audience-personas.md" class="card">
+      <div class="tag">Markdown · Personas</div>
+      <h3>Audience personas</h3>
+      <p>Twelve audience lenses — who they are, what they need, how to reach them.</p>
+      <div class="arrow">Read →</div>
+    </a>
+  </div>
+
+</main>
+
+</body>
+</html>

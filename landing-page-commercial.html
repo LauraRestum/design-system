@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Envision Commercial Solutions — Sample Landing Page</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens/envision-tokens.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-family-web);
+    color: var(--color-charcoal);
+    background: var(--color-white);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 1200px; margin: 0 auto;
+    padding-left: 40px; padding-right: 40px;
+  }
+  @media (max-width: 640px) { .container { padding: 0 24px; } }
+
+  /* Nav */
+  nav {
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding: 20px 0;
+  }
+  nav .inner { display: flex; justify-content: space-between; align-items: center; }
+  nav .logo {
+    font-size: 22px; font-weight: 900;
+    letter-spacing: -0.045em; color: var(--color-primary-blue);
+  }
+  nav .links { display: flex; gap: 32px; }
+  nav .links a {
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--color-charcoal); text-decoration: none;
+  }
+  nav .links a:hover { color: var(--color-primary-blue); }
+  @media (max-width: 800px) { nav .links { display: none; } }
+
+  /* Hero */
+  .hero {
+    background: var(--color-primary-blue);
+    color: var(--color-white);
+    padding: 128px 0;
+  }
+  .hero .eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--color-primary-green);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: 72px; font-weight: 900;
+    line-height: 1.05; letter-spacing: -0.045em;
+    max-width: 900px; margin-bottom: 32px;
+  }
+  .hero p {
+    font-size: 20px; color: #B8C5D6;
+    max-width: 620px; margin-bottom: 48px;
+  }
+  @media (max-width: 800px) {
+    .hero { padding: 80px 0; }
+    .hero h1 { font-size: 44px; }
+  }
+
+  .btn {
+    display: inline-block; text-decoration: none;
+    font-size: 14px; font-weight: 700;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    padding: 18px 36px; border-radius: 4px;
+    transition: background 0.15s ease;
+  }
+  .btn-primary { background: var(--color-primary-green); color: var(--color-white); }
+  .btn-primary:hover { background: #5E9A18; }
+  .btn-secondary { background: var(--color-primary-blue); color: var(--color-white); }
+  .btn-secondary:hover { background: var(--color-navy); }
+  .btn-ghost { background: transparent; color: var(--color-white); border: 1.5px solid var(--color-white); }
+  .btn-ghost:hover { background: var(--color-white); color: var(--color-primary-blue); }
+
+  /* Stats band */
+  .stats {
+    background: var(--color-offwhite);
+    padding: 80px 0;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+  .stats .grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px;
+  }
+  .stats .stat .num {
+    font-size: 56px; font-weight: 900;
+    line-height: 1; letter-spacing: -0.045em;
+    color: var(--color-primary-blue); margin-bottom: 12px;
+  }
+  .stats .stat .num.g { color: var(--color-primary-green); }
+  .stats .stat .label {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--color-charcoal);
+  }
+  @media (max-width: 800px) { .stats .grid { grid-template-columns: 1fr 1fr; } }
+
+  /* Capabilities section */
+  .caps { padding: 128px 0; }
+  .caps .header { max-width: 720px; margin-bottom: 64px; }
+  .caps .eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--color-primary-green);
+    margin-bottom: 16px;
+  }
+  .caps h2 {
+    font-size: 44px; font-weight: 900;
+    line-height: 1.1; letter-spacing: -0.045em;
+    color: var(--color-primary-blue); margin-bottom: 20px;
+  }
+  .caps .lede {
+    font-size: 18px; color: var(--color-charcoal);
+    max-width: 640px;
+  }
+  .caps .grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+  }
+  @media (max-width: 900px) { .caps .grid { grid-template-columns: 1fr; } }
+  .caps .card {
+    padding: 40px 32px;
+    background: var(--color-offwhite);
+    border-radius: 4px;
+    border-top: 3px solid var(--color-primary-blue);
+  }
+  .caps .card.accent { border-top-color: var(--color-primary-green); }
+  .caps .card h3 {
+    font-size: 22px; font-weight: 700;
+    letter-spacing: -0.02em; color: var(--color-primary-blue);
+    margin-bottom: 16px; line-height: 1.2;
+  }
+  .caps .card p { font-size: 15px; color: var(--color-charcoal); margin-bottom: 20px; }
+  .caps .card ul { list-style: none; }
+  .caps .card ul li {
+    font-size: 13px; padding: 6px 0;
+    border-top: 1px solid var(--color-border-subtle);
+    color: var(--color-charcoal);
+  }
+
+  /* Quote */
+  .quote {
+    padding: 128px 0;
+    text-align: center;
+    background: var(--color-white);
+  }
+  .quote .text {
+    font-size: 36px; font-weight: 700;
+    line-height: 1.25; letter-spacing: -0.02em;
+    color: var(--color-primary-blue);
+    max-width: 900px; margin: 0 auto 32px;
+  }
+  .quote .attribution {
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--color-charcoal);
+  }
+  .quote .attribution .name { color: var(--color-primary-blue); }
+  @media (max-width: 800px) { .quote .text { font-size: 24px; } .quote { padding: 80px 0; } }
+
+  /* Compliance block */
+  .compliance {
+    background: var(--color-navy); color: var(--color-white);
+    padding: 96px 0;
+  }
+  .compliance .eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.5em;
+    text-transform: uppercase; color: var(--color-primary-green);
+    margin-bottom: 20px;
+  }
+  .compliance h2 {
+    font-size: 36px; font-weight: 900;
+    line-height: 1.1; letter-spacing: -0.045em;
+    max-width: 720px; margin-bottom: 48px;
+  }
+  .compliance table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .compliance th {
+    text-align: left; padding: 16px 0;
+    border-bottom: 2px solid var(--color-primary-green);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--color-primary-green);
+  }
+  .compliance td {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    color: #E4EAF2;
+  }
+  .compliance td.active { color: var(--color-primary-green); font-weight: 700; }
+  .compliance .certs {
+    display: flex; gap: 12px; flex-wrap: wrap; margin-top: 40px;
+  }
+  .compliance .cert {
+    border: 1px solid rgba(255,255,255,0.4);
+    color: var(--color-white);
+    padding: 8px 16px; border-radius: 4px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+  }
+
+  /* CTA callout */
+  .cta {
+    background: var(--color-primary-green);
+    padding: 96px 0;
+    text-align: center;
+  }
+  .cta h2 {
+    font-size: 44px; font-weight: 900;
+    line-height: 1.05; letter-spacing: -0.045em;
+    color: var(--color-primary-blue);
+    max-width: 800px; margin: 0 auto 32px;
+  }
+  @media (max-width: 800px) { .cta h2 { font-size: 28px; } }
+
+  /* Footer */
+  footer {
+    background: var(--color-navy); color: var(--color-white);
+    padding: 72px 0 28px;
+  }
+  footer .grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px; margin-bottom: 56px;
+  }
+  footer .brand-name {
+    font-size: 24px; font-weight: 900;
+    letter-spacing: -0.045em; margin-bottom: 12px;
+  }
+  footer .tagline { font-size: 14px; color: #B8C5D6; max-width: 320px; }
+  footer h4 {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--color-primary-green); margin-bottom: 18px;
+  }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 10px; font-size: 14px; }
+  footer ul li a { color: #B8C5D6; text-decoration: none; }
+  footer ul li a:hover { color: var(--color-white); }
+  footer .bottom {
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: #B8C5D6; letter-spacing: 0.05em;
+  }
+  @media (max-width: 900px) {
+    footer .grid { grid-template-columns: 1fr 1fr; }
+    footer .bottom { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container inner">
+    <div class="logo">ENVISION</div>
+    <div class="links">
+      <a href="#">Capabilities</a>
+      <a href="#">Solutions</a>
+      <a href="#">Contracts</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Commercial Solutions</div>
+    <h1>Enterprise manufacturing, on time, at spec.</h1>
+    <p>Print, fulfillment, contact center, and assembly operations serving Fortune 500 and federal buyers from a 410,000 sq ft operation.</p>
+    <a href="#" class="btn btn-primary">Schedule a Conversation</a>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container">
+    <div class="grid">
+      <div class="stat"><div class="num">410K</div><div class="label">Sq Ft Operations</div></div>
+      <div class="stat"><div class="num g">93%</div><div class="label">On-Time Delivery</div></div>
+      <div class="stat"><div class="num">16</div><div class="label">Base Supply Locations</div></div>
+      <div class="stat"><div class="num">90+</div><div class="label">Years of Operation</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="caps">
+  <div class="container">
+    <div class="header">
+      <div class="eyebrow">Core Capabilities</div>
+      <h2>Four operations, one integrated partner.</h2>
+      <p class="lede">Envision delivers across print, fulfillment, contact center, and assembly — with compliance, certification, and scale that meets enterprise and federal procurement requirements.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <h3>Commercial Print</h3>
+        <p>Enterprise commercial print with integrated fulfillment, variable data, and on-site warehousing.</p>
+        <ul>
+          <li>G3 certified color management</li>
+          <li>HIPAA-compliant medical print</li>
+          <li>Variable data & personalization</li>
+        </ul>
+      </div>
+      <div class="card accent">
+        <h3>Fulfillment</h3>
+        <p>Pick, pack, and ship operations with full inventory management and same-day turn capability.</p>
+        <ul>
+          <li>Real-time inventory integration</li>
+          <li>Kitting & assembly services</li>
+          <li>Federal & commercial shipping</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Contact Center</h3>
+        <p>Inbound and outbound contact services with HIPAA compliance for healthcare and federal clients.</p>
+        <ul>
+          <li>Live agent & IVR</li>
+          <li>Multi-language support</li>
+          <li>Quality monitoring & reporting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote">
+  <div class="container">
+    <p class="text">"The team delivered 240,000 personalized pieces with zero defects and a 4-day turn. That's who you want running your operation."</p>
+    <div class="attribution"><span class="name">Sarah K.</span> &nbsp;·&nbsp; VP Procurement, Fortune 100 Healthcare</div>
+  </div>
+</section>
+
+<section class="compliance">
+  <div class="container">
+    <div class="eyebrow">COMPLIANCE & CONTRACTS</div>
+    <h2>Certifications and contract vehicles.</h2>
+    <table>
+      <thead><tr><th>Vehicle</th><th>Category</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>GSA Schedule</td><td>Federal</td><td class="active">Active</td></tr>
+        <tr><td>AbilityOne</td><td>Federal</td><td class="active">Active</td></tr>
+        <tr><td>SEWP VI</td><td>Federal IT</td><td>Pending</td></tr>
+        <tr><td>Vizient GPO</td><td>Healthcare</td><td class="active">Active</td></tr>
+      </tbody>
+    </table>
+    <div class="certs">
+      <span class="cert">HIPAA Compliant</span>
+      <span class="cert">SOC 2 Type II</span>
+      <span class="cert">ISO 9001:2015</span>
+      <span class="cert">G3 Certified</span>
+      <span class="cert">Section 508</span>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2>Ready to see what enterprise-grade looks like?</h2>
+    <a href="#" class="btn btn-secondary">Request a Capabilities Brief</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="grid">
+      <div>
+        <div class="brand-name">Envision</div>
+        <p class="tagline">Enterprise manufacturing, commercial print, and federal contracting — built with access from the start.</p>
+      </div>
+      <div>
+        <h4>Capabilities</h4>
+        <ul>
+          <li><a href="#">Print & Fulfillment</a></li>
+          <li><a href="#">Contact Center</a></li>
+          <li><a href="#">Assembly</a></li>
+          <li><a href="#">Base Supply Centers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Leadership</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">News</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Wichita Campus</li>
+          <li>Dallas Campus</li>
+          <li><a href="#">Get in touch</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <div>© 2026 Envision Inc. All rights reserved.</div>
+      <div>Proudly manufactured in the United States.</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
