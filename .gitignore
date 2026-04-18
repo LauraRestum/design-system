@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build
+node_modules/
+dist/
+build/
+.cache/
+
+# Environment
+.env
+.env.local
+
+# Adobe / Office temp
+~$*
+*.tmp

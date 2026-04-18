@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Envision Design System — Token Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens/envision-tokens.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-family-web);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-on-light);
+    background: var(--color-surface-page);
+    padding: 48px 32px 96px;
+    max-width: 1120px;
+    margin: 0 auto;
+    line-height: var(--line-height-body);
+  }
+  .masthead {
+    background: var(--color-primary-blue);
+    color: var(--color-text-on-dark);
+    padding: 56px 48px;
+    margin: -48px -32px 48px;
+  }
+  .masthead .eyebrow {
+    font-size: var(--font-size-caption);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-button);
+    text-transform: uppercase;
+    color: var(--color-primary-green);
+    margin-bottom: 20px;
+  }
+  .masthead h1 {
+    font-size: var(--font-size-display-md);
+    font-weight: var(--font-weight-black);
+    line-height: var(--line-height-headline);
+    letter-spacing: var(--letter-spacing-headline);
+  }
+  .masthead p {
+    font-size: var(--font-size-body-lg);
+    color: var(--color-text-secondary-on-dark);
+    margin-top: 20px;
+    max-width: 640px;
+    line-height: var(--line-height-body);
+  }
+
+  section { margin-bottom: 72px; }
+  section > h2 {
+    font-size: var(--font-size-heading-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary-blue);
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--color-primary-blue);
+    line-height: var(--line-height-headline);
+    letter-spacing: var(--letter-spacing-headline);
+  }
+  section > p.intro {
+    font-size: var(--font-size-body-base);
+    color: var(--color-charcoal);
+    max-width: 780px;
+    margin-bottom: 32px;
+    line-height: var(--line-height-body);
+  }
+  .section-eyebrow {
+    font-size: var(--font-size-caption);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-button);
+    text-transform: uppercase;
+    color: var(--color-primary-green);
+    margin-bottom: 10px;
+  }
+
+  /* Color swatches */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .swatch {
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .swatch .chip { height: 110px; }
+  .swatch .meta {
+    padding: 14px 16px;
+    background: var(--color-white);
+    font-size: var(--font-size-body-sm);
+  }
+  .swatch .meta strong {
+    display: block;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary-blue);
+    margin-bottom: 6px;
+    font-size: 15px;
+  }
+  .swatch .meta .hex {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-caption);
+    color: var(--color-charcoal);
+    display: block;
+    margin-bottom: 3px;
+  }
+  .swatch .meta .pms {
+    font-family: var(--font-family-mono);
+    font-size: 11px;
+    color: var(--color-charcoal);
+    opacity: 0.7;
+  }
+
+  /* Accessibility pairs */
+  .a11y-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .a11y-card {
+    padding: 24px 20px;
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 120px;
+    justify-content: space-between;
+  }
+  .a11y-card .pair-text {
+    font-size: 16px;
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-headline);
+    letter-spacing: var(--letter-spacing-headline);
+  }
+  .a11y-card .pair-meta {
+    font-size: 11px;
+    font-family: var(--font-family-mono);
+    letter-spacing: var(--letter-spacing-button);
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  /* Type specimen */
+  .type-specimen {
+    display: grid;
+    gap: 28px;
+    padding: 36px;
+    background: var(--color-surface-elevated);
+    border-radius: var(--radius-md);
+  }
+  .type-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    align-items: baseline;
+    gap: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+  .type-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .type-row .label {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-caption);
+    color: var(--color-charcoal);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-button);
+    line-height: var(--line-height-body);
+  }
+  .type-row .label em {
+    display: block;
+    font-style: normal;
+    margin-top: 6px;
+    font-size: 10px;
+    color: var(--color-charcoal);
+    opacity: 0.7;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .type-row .sample { color: var(--color-primary-blue); }
+  .type-row .sample.body { color: var(--color-charcoal); }
+
+  /* Buttons */
+  .button-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .env-btn {
+    font-family: var(--font-family-web);
+    font-size: var(--font-size-body-base);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-button);
+    padding: 16px 30px;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .env-btn.primary { background: var(--color-action-primary); color: var(--color-white); }
+  .env-btn.primary:hover { background: var(--color-action-primary-hover); }
+  .env-btn.accent { background: var(--color-action-accent); color: var(--color-white); }
+  .env-btn.accent:hover { background: var(--color-action-accent-hover); }
+  .env-btn.ghost {
+    background: transparent;
+    color: var(--color-primary-blue);
+    border: 1.5px solid var(--color-primary-blue);
+  }
+  .env-btn.ghost:hover { background: var(--color-primary-blue); color: var(--color-white); }
+
+  /* Voice compare */
+  .voice-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 20px;
+  }
+  .voice-card {
+    padding: 24px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-subtle);
+  }
+  .voice-card.before { background: var(--color-surface-elevated); }
+  .voice-card.after { background: var(--color-white); border-color: var(--color-primary-green); border-width: 2px; }
+  .voice-card .tag {
+    font-size: 11px;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-button);
+    margin-bottom: 10px;
+  }
+  .voice-card.before .tag { color: var(--color-charcoal); }
+  .voice-card.after .tag { color: var(--color-primary-green); }
+  .voice-card p {
+    font-size: 15px;
+    color: var(--color-charcoal);
+    line-height: var(--line-height-body);
+  }
+
+  footer {
+    margin-top: 96px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-border-subtle);
+    font-size: var(--font-size-caption);
+    color: var(--color-charcoal);
+  }
+
+  @media (max-width: 720px) {
+    .type-row { grid-template-columns: 1fr; gap: 8px; }
+    .voice-pair { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="eyebrow">Envision Design System · 2026 Edition</div>
+  <h1>Token Preview</h1>
+  <p>Our colors are bold, vibrant, and full of life — just like the people we serve. Every value on this page is rendered directly from the canonical token files, following Envision Brand Book specifications.</p>
+</div>
+
+<section>
+  <div class="section-eyebrow">Section 01</div>
+  <h2>Primary Colors</h2>
+  <p class="intro">Primary blue is the lead color for Envision across corporate, commercial, B2B, and federal work. Primary green is a controlled accent for CTAs, highlights, and single-emphasis moments.</p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="chip" style="background:#003087"></div><div class="meta"><strong>Blue</strong><span class="hex">#003087</span><span class="pms">PMS 287C · CMYK 100 / 81 / 0 / 23</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#78BE21"></div><div class="meta"><strong>Green</strong><span class="hex">#78BE21</span><span class="pms">PMS 368C · CMYK 54 / 0 / 100 / 0</span></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Section 02</div>
+  <h2>Extended Palette</h2>
+  <p class="intro">Supporting colors for depth, warmth, and differentiation across program areas, events, and storytelling. Use intentionally — extended colors enhance the system, they do not replace the primaries.</p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="chip" style="background:#002855"></div><div class="meta"><strong>Navy</strong><span class="hex">#002855</span><span class="pms">PMS 295C · CMYK 100 / 63 / 0 / 67</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#41B6E6"></div><div class="meta"><strong>Bright Blue</strong><span class="hex">#41B6E6</span><span class="pms">PMS 298C · CMYK 63 / 3 / 0 / 0</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#00491E"></div><div class="meta"><strong>Forest Green</strong><span class="hex">#00491E</span><span class="pms">PMS 3537C · CMYK 100 / 0 / 100 / 69</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#FFB81C"></div><div class="meta"><strong>Goldenrod</strong><span class="hex">#FFB81C</span><span class="pms">PMS 1235C · CMYK 0 / 25 / 94 / 0</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#EA733D"></div><div class="meta"><strong>Terracotta</strong><span class="hex">#EA733D</span><span class="pms">PMS 4012C · CMYK 0 / 64 / 80 / 0</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#8C4799"></div><div class="meta"><strong>Violet</strong><span class="hex">#8C4799</span><span class="pms">PMS 258C · CMYK 51 / 84 / 0 / 0</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#53565A"></div><div class="meta"><strong>Charcoal</strong><span class="hex">#53565A</span><span class="pms">PMS Cool Gray 11C · CMYK 63 / 52 / 44 / 33</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#D9D9D6"></div><div class="meta"><strong>Gray</strong><span class="hex">#D9D9D6</span><span class="pms">PMS Cool Gray 1C · CMYK 10 / 7 / 5 / 0</span></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Section 03</div>
+  <h2>Accessible Color Combinations</h2>
+  <p class="intro">These combinations meet or exceed WCAG 2.1 AA standards (4.5:1 contrast ratio). Only use approved combinations when layering text or icons on color backgrounds.</p>
+  <div class="a11y-grid">
+    <div class="a11y-card" style="background:#003087; color:#FFFFFF"><div class="pair-text">White on Blue</div><div class="pair-meta">AA Pass</div></div>
+    <div class="a11y-card" style="background:#002855; color:#FFFFFF"><div class="pair-text">White on Navy</div><div class="pair-meta">AA Pass</div></div>
+    <div class="a11y-card" style="background:#FFFFFF; color:#003087; border:1px solid #D9D9D6"><div class="pair-text">Blue on White</div><div class="pair-meta">AA Pass</div></div>
+    <div class="a11y-card" style="background:#FFFFFF; color:#002855; border:1px solid #D9D9D6"><div class="pair-text">Navy on White</div><div class="pair-meta">AA Pass</div></div>
+    <div class="a11y-card" style="background:#003087; color:#78BE21"><div class="pair-text">Green on Blue</div><div class="pair-meta">AA Pass</div></div>
+    <div class="a11y-card" style="background:#FFFFFF; color:#53565A; border:1px solid #D9D9D6"><div class="pair-text">Charcoal on White</div><div class="pair-meta">AA Pass</div></div>
+    <div class="a11y-card" style="background:#002855; color:#78BE21"><div class="pair-text">Green on Navy</div><div class="pair-meta">AA Pass</div></div>
+    <div class="a11y-card" style="background:#FFFFFF; color:#00491E; border:1px solid #D9D9D6"><div class="pair-text">Forest on White</div><div class="pair-meta">AA Pass</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Section 04</div>
+  <h2>Type Scale</h2>
+  <p class="intro">Montserrat for web and digital. Gotham for print (licensed). Headlines Bold or Black, title case, leading 110%, tracking -0.045em. Buttons Bold uppercase, tracking 0.25em. Large subheads Bold uppercase, tracking 0.5em.</p>
+  <div class="type-specimen">
+    <div class="type-row"><div class="label">Headline XL<em>72 / Black / -0.045em / 110%</em></div><div class="sample" style="font-size:72px; font-weight:900; line-height:1.1; letter-spacing:-0.045em;">Every Child Is Ready</div></div>
+    <div class="type-row"><div class="label">Headline LG<em>56 / Bold / -0.045em / 110%</em></div><div class="sample" style="font-size:56px; font-weight:700; line-height:1.1; letter-spacing:-0.045em;">Every Child Is Ready</div></div>
+    <div class="type-row"><div class="label">Headline MD<em>36 / Bold / -0.045em / 110%</em></div><div class="sample" style="font-size:36px; font-weight:700; line-height:1.1; letter-spacing:-0.045em;">Every Child Is Ready</div></div>
+    <div class="type-row"><div class="label">Subhead LG<em>22 / Bold / UPPER / 0.5em</em></div><div class="sample" style="font-size:22px; font-weight:700; line-height:1.1; letter-spacing:0.5em; text-transform:uppercase;">MISSION PILLARS</div></div>
+    <div class="type-row"><div class="label">Subhead SM<em>18 / Bold / -0.02em</em></div><div class="sample" style="font-size:18px; font-weight:700; line-height:1.1; letter-spacing:-0.02em;">Foundation Mission Services</div></div>
+    <div class="type-row"><div class="label">Body LG<em>18 / Regular / -0.02em / 150%</em></div><div class="sample body" style="font-size:18px; font-weight:400; line-height:1.5; letter-spacing:-0.02em;">Envision Print Services delivers enterprise-grade print, fulfillment, and assembly solutions. HIPAA compliant, on time, and built to spec.</div></div>
+    <div class="type-row"><div class="label">Body Base<em>16 / Regular / -0.02em / 150%</em></div><div class="sample body" style="font-size:16px; font-weight:400; line-height:1.5; letter-spacing:-0.02em;">From Heather's Camp to adult day support and beyond, Envision Mission Services is there at every stage. Whatever the need, whatever the moment, no one navigates this alone.</div></div>
+    <div class="type-row"><div class="label">Body SM<em>14 / Regular / -0.02em / 150%</em></div><div class="sample body" style="font-size:14px; font-weight:400; line-height:1.5; letter-spacing:-0.02em;">A career isn't just income. It's identity, independence, and momentum.</div></div>
+    <div class="type-row"><div class="label">Caption<em>12 / Medium / 150%</em></div><div class="sample body" style="font-size:12px; font-weight:500; line-height:1.5;">Source: Envision FY25 Annual Impact Report.</div></div>
+    <div class="type-row"><div class="label">Button<em>16 / Bold / UPPER / 0.25em</em></div><div class="sample" style="font-size:16px; font-weight:700; line-height:1.1; letter-spacing:0.25em; text-transform:uppercase; color:#78BE21;">GET STARTED</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Section 05</div>
+  <h2>Buttons</h2>
+  <p class="intro">Bold, uppercase, tracked out to 0.25em. Primary blue for primary actions. Primary green for accent actions. Ghost for secondary. Corner radius 4px — never rounded pills.</p>
+  <div class="button-row">
+    <button class="env-btn primary">Schedule a Conversation</button>
+    <button class="env-btn accent">Request Capabilities</button>
+    <button class="env-btn ghost">Download One-Pager</button>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Section 06</div>
+  <h2>Voice in Action</h2>
+  <p class="intro">Mission follows credibility. Lead with capability, proof, and the person's agency. A sample rewrite from the brand book:</p>
+  <div class="voice-pair">
+    <div class="voice-card before">
+      <div class="tag">Before</div>
+      <p>Envision is a nonprofit organization that provides meaningful employment to people who are blind or visually impaired through our print and fulfillment services.</p>
+    </div>
+    <div class="voice-card after">
+      <div class="tag">After</div>
+      <p>Envision Print Services delivers enterprise-grade print, fulfillment, and assembly solutions. HIPAA compliant, on time, and built to spec. Our workforce is proven. Our capabilities are scalable. Let's talk about what we can do for your operation.</p>
+    </div>
+  </div>
+  <div class="voice-pair">
+    <div class="voice-card before">
+      <div class="tag">Before</div>
+      <p>Despite losing most of her vision, Maria didn't give up. Thanks to Envision, she was able to get her life back.</p>
+    </div>
+    <div class="voice-card after">
+      <div class="tag">After</div>
+      <p>Maria didn't know what was possible after her diagnosis. After working with the Envision Vision Rehabilitation Center, through low vision evaluations, assistive technology training, and independent living skills programs, she had the tools to move forward on her own terms.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Envision Design System · v1.2.0 · Sourced from the Envision Brand Book (2026 Edition) · Internal use only · Laura Restum, Marketing &amp; Communications
+</footer>
+
+</body>
+</html>
