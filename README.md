@@ -1,15 +1,7 @@
-# Components
+# Examples
 
-Reusable component patterns across HTML/CSS and PowerPoint. These are **patterns**, not a full component library — documented visual structures with sample code.
+Real, shipped Envision work that exemplifies the design system in use. **Reference material, not a component library.** Use these to calibrate aesthetic and tone, not to copy-paste.
 
-## Folders (to be populated)
-
-- `html/` — HTML/CSS component patterns (buttons, cards, headers, data blocks, footers)
-- `powerpoint/` — PPTX slide layouts (title, section divider, data slide, impact slide, callout)
-- `print/` — InDesign/print-ready component specs (one-pager header, sidebar, callout box)
-
-Each component folder contains a `README.md` with:
-- Visual spec (dimensions, tokens used, states)
-- When to use / when not to use
-- Accessibility notes
-- Sample code or file
+Each example should include:
+- The deliverable itself (HTML, PDF, PPTX, etc.)
+- A short `notes.md` explaining what it is, when it shipped, and what makes it a good reference
