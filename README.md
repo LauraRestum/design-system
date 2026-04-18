@@ -1,16 +1,15 @@
-# Assets
+# Components
 
-Brand assets — the actual files used in production.
+Reusable component patterns across HTML/CSS and PowerPoint. These are **patterns**, not a full component library — documented visual structures with sample code.
 
-## Folders
+## Folders (to be populated)
 
-- `logos/` — Primary, secondary, one-color, knockout; SVG + PNG
-- `fonts/` — Montserrat license file and source files for offline / print use
-- `images/` — Approved photography and illustration
-- `icons/` — Icon library (SVG preferred)
+- `html/` — HTML/CSS component patterns (buttons, cards, headers, data blocks, footers)
+- `powerpoint/` — PPTX slide layouts (title, section divider, data slide, impact slide, callout)
+- `print/` — InDesign/print-ready component specs (one-pager header, sidebar, callout box)
 
-## Rules
-
-- **SVG first.** Raster only where SVG is impossible (photography).
-- **File naming:** `envision_[asset]_[variant]_[size].ext` — e.g., `envision_logo_primary_knockout.svg`
-- **No logo modifications.** Do not recolor, rotate, stretch, or overlay the logo.
+Each component folder contains a `README.md` with:
+- Visual spec (dimensions, tokens used, states)
+- When to use / when not to use
+- Accessibility notes
+- Sample code or file
